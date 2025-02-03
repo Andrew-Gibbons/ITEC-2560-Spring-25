@@ -1,0 +1,9 @@
+/*Set body background color*/
+body {
+    background-color: rgb(147, 185, 241);
+}
+
+/*Set header class font-family to merienda*/
+.header {
+    font-family: "Merienda", serif;
+}
