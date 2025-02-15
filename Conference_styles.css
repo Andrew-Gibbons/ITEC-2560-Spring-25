@@ -7,3 +7,7 @@ body {
 .header {
     font-family: "Merienda", serif;
 }
+
+#m-3 {
+    margin: 3px;
+}
