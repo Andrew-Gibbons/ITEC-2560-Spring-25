@@ -1,0 +1,21 @@
+#real-alert {
+    color: red;
+    font-size: 2em;
+    font-weight: bold;
+}
+#test-only {
+    color: blue;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.missile-link {
+    background-color: rgb(76, 202, 211);
+    font-size: 2em;
+    font-weight: bold;
+    display:block
+}
+
+#padded-left {
+    padding-left: 15px;
+}
