@@ -1,0 +1,57 @@
+<!-- Create HTML document -->
+<!DOCTYPE html
+<!-- Create html element with lang attribute set to en -->
+<html lang="en">
+<!-- Create head -->
+    <head>
+        <!-- Create Title Rectangles -->
+        <title>Rectangles</title>
+        <!-- Create style element -->
+        <style>
+            /* Set the border of the canvas element to 1px black solid */
+            #canvas {
+                border: 1px black solid;
+            }
+        /* Close the style element */ 
+        </style>
+    <!-- Close the head element -->
+    </head>
+    <!-- Create body -->
+    <body>
+
+        <!-- The canvas element.  Set height and width in HTML, and give it an ID of canvas -->
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <!-- Start script -->
+        <script>
+            // Get the canvas element by ID and set it to the canvas variable
+            let canvas = document.getElementById("canvas")
+            let context = canvas.getContext("2d")
+
+            // Set fill color to blue, draw a filled square
+            // Use fillRect, with height and width the same
+            context.fillStyle = "#0000FF" // Set fill color to blue
+            context.fillRect(20, 20, 100, 100) // Draw a filled square
+
+
+            // Set stroke color to red, draw the outline of a square
+            context.strokeStyle = "red"
+            context.strokeRect(140, 20, 100, 100)
+
+            // Draw a couple of rectangles
+            context.strokeRect(270, 20, 50, 100)
+            context.strokeStyle = "purple"
+            context.strokeRect(260, 40, 110, 50)
+
+            // Draw a red rectangle with a purple line border
+            // Set the stroke style and fill style, then
+            // call fillRect and strokeRect
+            context.strokeStyle = "purple"
+            context.fillStyle = "gold"
+            context.fillRect(380, 20, 100, 100)
+            context.strokeRect(380, 20, 100, 100)
+            
+        </script>
+    </body>
+</html>
+
+

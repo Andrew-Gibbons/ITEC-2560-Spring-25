@@ -1,0 +1,81 @@
+<!-- Create an HTML Document in English format -->
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Create the Head of the page -->
+    <head>
+        <!-- Create the Title of the page -->
+        <title></title>
+    <!-- End Head -->
+    </head>
+    <!-- Begin the Body of the page -->
+    <body>
+        <!-- Start a paragraph asking how many credits a person is taking this semester-->
+        <p>Enter some text to add to the list.</p>
+        <!-- Create an Input with the id of nw-text -->
+        <input id="new-text"></input>
+        <!-- Create a button with the id of add-text and text saying Add Text-->
+        <button id="add-text">Add Text</button>
+        <!-- Clear button looks better here as opposed to going down screen as items are added -->
+        <button id="clear">Clear</button>
+        <!-- Create an unordered list with the id of list-of-text -->
+        <ul id="list-of-text"></ul>
+    <!-- Start Script -->
+    <script>
+        // Create variables for the add button, text input, list of text, and a clear button
+        let textInput = document.querySelector("#new-text")
+        let addButton = document.querySelector("#add-text")
+        let textList = document.querySelector("#list-of-text")
+        let clearButton = document.querySelector("#clear")
+        // Create a variable for the number of elements in the list
+        let elementsInList = 0
+        // Create a variable for the maximum number of elements in the list
+        let maxElements = 10 
+        // Create an event listener for the add button with a keyup of 13
+        document.addEventListener("keyup", function() {
+            if (event.keyCode == 13) {
+                addButton.click()
+            }
+        })
+        // Create an event listener for the Add Text button
+        addButton.addEventListener("click", function() {
+           // read the text in the input
+            let newText = textInput.value
+            // console.log(newText)
+            // check if the input is empty
+            if (newText.length == 0) {
+                alert("Please enter some text.")
+                return
+            }
+            // This checks if elementsInList is greater than or equal to maxElements.
+            // elementsInList applies to both the unordered list and the amount of letters put in input.
+            if (elementsInList >= maxElements) {
+                alert("You have reached the maximum number of elements in the list.")
+                return
+            }
+            // This checks if the length of newText is greater than 50 and if it is it will alert the user
+            if (newText.length > 50 ) {
+                alert("You have reached the maximum number of characters in the input.")
+                return
+            }
+
+            // create a new li element with text from the input and a clear button,
+            let newListItem = document.createElement("li")
+            newListItem.innerHTML = newText
+            // add the new li element to the list
+            textList.appendChild(newListItem)
+            // clear the input
+            textInput.value = ""
+            // increment the number of elements in the list
+            elementsInList++
+        })
+        // Create an event listener for the Clear button
+        clearButton.addEventListener("click", function() {
+            textList.innerHTML = ''
+            elementsInList = 0
+        })
+    // End Script
+    </script>
+    <!-- End Body -->
+    </body>
+<!-- End HTML -->
+</html>

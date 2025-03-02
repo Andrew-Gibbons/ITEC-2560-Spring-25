@@ -1,0 +1,48 @@
+<!-- Create an HTML Document in English format -->
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Create the Head of the page -->
+    <head>
+        <!-- Create the Title of the page -->
+        <title></title>
+    <!-- End Head -->
+    </head>
+    <!-- Begin the Body of the page -->
+    <body>
+        <!-- Start a paragraph asking how many credits a person is taking this semester-->
+        <p>How many credits are you taking this semester?</p>
+        <!-- Create a number type with an id of credit-count-->
+        <input type="number" id="credit-count">
+        <!-- Create a Submit button with an id of submit-credits-->
+        <button id="submit-credits">Submit</button>
+        <!-- Create a paragraph with an id of status-message-->
+        <p id="status-message"></p>
+    <!-- Start Script -->
+    <script>
+        // Create variables for the submit button, credit count input, and status message
+        let submitButton = document.querySelector("#submit-credits")
+        let creditsInput = document.querySelector("#credit-count")
+        let statusMessage = document.querySelector("#status-message")
+        // Create an event listener for the submit button
+        submitButton.addEventListener('click', function () {
+            // Create a variable for the number of credits
+            let credits = creditsInput.value
+            // Create if statements for the number of credits
+            if (credits > 24) {
+                statusMessage.innerHTML = "You are overloading this semester."
+            }else if (credits >= 12) {
+                statusMessage.innerHTML = "You are a full-time student."
+            } else if (credits >= 6) {
+                statusMessage.innerHTML = "You are a part-time student."
+            } else if (credits >= 0) {
+                statusMessage.innerHTML = "You are enrolled less than half time."
+            } else {
+                statusMessage.innerHTML = "Please enter zero or more credits."
+            }
+        })
+    // End Script
+    </script>
+    <!-- End Body -->
+    </body>
+<!-- End HTML -->
+</html>

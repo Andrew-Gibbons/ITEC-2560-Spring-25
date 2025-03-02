@@ -1,0 +1,51 @@
+<!-- Create HTML document -->
+<!DOCTYPE html>
+<!-- Start html with language English-->
+<html lang="en">
+<!-- Start head -->
+<head>
+    <!-- Set meta charset to UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Create title Fill vs. Stroke-->
+    <title>Fill vs. Stroke</title>
+    <!-- Create style tag -->
+    <style>
+    /* Create style for canvas with a 1px black solid border */    
+    #fill_stroke_canvas {
+      border: 1px black solid;
+    }
+    /* Close style tag */
+    </style>
+<!-- Close head-->
+</head>
+<!-- Start body -->
+<body>
+    <!-- Create canvas elevelnt with id fill_stroke_canvas, height 300, and width 300-->
+    <canvas id="fill_stroke_canvas" height="300" width="300"></canvas>
+    <!-- Create script tag -->
+    <script>
+    // This JavaScript code snippet selects a canvas element from the DOM and obtains its 2D rendering context.
+    // let canvas = document.getElementById("fill_stroke_canvas")
+    // Selects the HTML <canvas> element with the ID fill_stroke_canvas and assigns it to the variable canvas.
+    // let context = canvas.getContext("2d")
+    // Gets the 2D drawing context for the selected canvas element and assigns it to the variable context.
+    let canvas = document.getElementById("fill_stroke_canvas")
+    let context = canvas.getContext("2d")
+    // context.fillStyle = "#f00"
+    // Sets the fill color for the canvas drawing context to red (#f00 is shorthand for #FF0000).
+    // context.fillRect(20, 20, 100, 100)
+    // Draws a filled rectangle at the coordinates (20, 20) with a width and height of 100 pixels.
+    context.fillStyle = "#f00"
+    context.fillRect(20, 20, 100, 100)
+    // context.strokeStyle = "#f00"
+    // Sets the stroke color for the canvas drawing context to red (#f00 is shorthand for #FF0000).
+    // context.strokeRect(140, 140, 100, 100)
+    // Draws the outline (or "stroke") of a rectangle at the coordinates (140, 140) with a width and height of 100 pixels.
+    context.strokeStyle = "#f00"
+    context.strokeRect(140, 140, 100, 100)
+    // Close script tag
+  </script>
+<!-- Close body -->
+</body>
+<!-- Close html -->
+</html>

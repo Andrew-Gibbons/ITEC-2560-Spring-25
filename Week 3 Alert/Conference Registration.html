@@ -1,0 +1,117 @@
+<!-- Create an html document in English format-->
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start the head and set UTF-8-->
+<head>
+    <meta charset="UTF-8">
+    <!-- Set the title to Conference Registration-->
+    <title>Conference Registration</title>
+    <!-- Create links to font libraries -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Markazi+Text:wght@400..700&family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+    <!-- Create links to Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Create link to own css file -->
+    <link rel="stylesheet" type="text/css" href="conference_styles.css"/>
+<!-- End head -->
+</head>
+<!-- Start the body -->
+<body class="m-3">
+    <!-- Start the Div -->
+    <div>
+        <!-- Start a Form-->
+        <form>
+            <!-- Create a Name label with classes of header and form-label, and a for of name -->
+            <label class="header form-label form-control" for="name">Name:</label>
+            <!-- Create an input with a class of form-control and an id and name of name -->
+            <input type="text" maxlength="70" class="form-control" id="name" name="name" required>
+            <!-- Break -->
+            <br>
+            <!-- Create a label of Password with classes of header and form-label, and a for of password -->
+            <label type="password" class="header form-label form-control" for="password">Password</label>
+            <!-- Create an input with an id of password and a name of password-->
+            <input id="password" name="password" required>
+            <!-- Break -->
+            <br>
+            <!-- Create a label of Email with classes header and form-label, and a for of email -->
+            <label type="email" class="header form-label form-control" for="email">Email</label>
+            <!-- Create an input with an id of email and a name of email -->
+            <input id="email" name="email" required>
+            <br>
+            <!-- Create a required Select input.  The first option's value should be "What size do you want"-->
+             <!-- The second thru fourth options should be a list of small, medium, and large -->
+            <select required>
+                <option value="">What size T-shirt do you want?</option>
+                <option value="value1">Small</option>
+                <option value="value2">Medium</option>
+                <option value="value3">Large</option>
+            <!-- End Select input-->
+            </select>
+            <!-- Break -->
+            <br>
+            <!-- Create a label of Date of Birth with classes of header and form-label, and a for of DOB -->
+            <label class="header form-label form-control" for="DOB">Date of Birth</label>
+            <!-- Create an input with an id of DOB, a name of DOB, type of date, and is required -->
+            <input id="DOB" name="DOB" type="date" required>
+            <!-- Break --> 
+            <br>
+            <!-- Set a Legend to ask if the person wants to receive emails -->
+            <p class="header form-control">Do you want to receive email from conference sponsors?</p>
+
+            <!-- Create Div with classes of header and form-check -->
+            <div class="header form-check">
+
+                <!-- Create a Yes label and a for of yes -->
+                <label for="yes">Yes</label>
+                <!-- Create an input with an id of yes, type of radio, and name of current-student -->
+                <input id="yes" type="radio" name="current-student">
+            <!-- End Div -->
+            </div>
+            <!-- Create a Div with a class of form-check-->
+            <div class="form-check">
+                <!-- Create a No label, and a for of no -->
+                <label for="no">No</label>
+                <!-- Create an input with an id of no, type of radio, and name of current-student -->
+                <input id="no" type="radio" name="current-student">
+            <!-- End Div -->
+             </div>
+             <!-- Create a Div with class of header -->
+             <div class="header">
+                <!-- Create a legend asking if the person wants to attend morning, afternoon, or both conferences -->
+                <legend class="form-control">Do you want to attend a morning or afternoon conference, or both conferences?</legend>
+                <!-- Create Morning and Afternoon Checkboxes label -->
+                <label class="form-check-label" for="morning">
+                <input class="form-check-input" type="checkbox" name="timeOfDay" value="morning" id="morning"> Morning
+                </label>
+                <label class="form-check-label" for="afternoon">
+                <input class="form-check-input" type="checkbox" name="timeOfDay" value="afternoon" id="afternoon"> Afternoon
+            <!-- End label -->    
+            </label>
+            <!-- End Div -->
+             </div>
+            <!-- Create a Div with a class of header -->
+             <div class="header">
+                <!-- Create a Special Requests label with a for of specreq -->
+                <label for="specreq">Special Requests</label>
+                <!-- Break -->
+                <br>
+                <!-- Create a Textarea-->
+                <textarea name="specreq" id="specreq" rows="7" cols="70"></textarea>
+            <!-- End Div --> 
+            </div>
+            <!-- Create Div -->
+            <div>
+                <!-- Create a Submit button with a class of btn btn-primary -->
+                <input class="btn btn-primary" type="submit">
+            <!-- End Div -->
+             </div>
+        <!-- End Form -->
+        </form>
+    <!-- End Div -->
+    </div>
+<!-- End Body -->
+</body>
+<!-- End html-->
+</html>

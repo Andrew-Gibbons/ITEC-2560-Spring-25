@@ -1,0 +1,50 @@
+<!-- Create HTML document -->
+<!DOCTYPE html>
+<!-- Set language to English -->
+<html lang="en">
+    <!-- Start head -->
+    <head>
+        <!-- Set title to Hello Canvas -->
+        <title>Hello Canvas</title>
+        <!-- Add style to the canvas -->
+        <style>
+            #canvas {
+                border: 1px black solid;
+            }
+        /* End style */
+        </style>
+    <!-- Start head -->
+    </head>
+    <!-- Start body -->
+    <body>
+
+        <!-- The canvas element.  Set height and width in HTML, and give it an ID canvas -->
+        <canvas id="canvas" width="300" height="200"></canvas>
+        <!-- Start script-->
+        <script>
+            // Find the canvas element in this document
+            let canvas = document.getElementById("canvas");
+            // A context object will be used to draw on the canvas
+            let context = canvas.getContext("2d");
+
+            // Draw a rectangle, filled with the default color, black
+            // The arguments are (top left corner x, top left corner y, width, height)
+            // context is the 2D drawing context for the canvas.
+            // fillRect(20, 20, 100, 100) draws a rectangle filled with the current fill style (e.g., color, gradient, or pattern) on the canvas
+            // The parameters (20, 20, 100, 100) specify the position and size of the rectangle. (20, 20) is the top-left corner of the rectangle,
+            // and 100 is the width and height.
+            context.fillRect(20, 20, 100, 100);
+
+            // stroke version of this function draw lines.  Same arguments as fillRect
+            // context is the 2D drawing context for the canvas.
+            // strokeRect(150, 20, 100, 100) draws the outline (or "stroke") of a rectangle on the canvas.
+            // The parameters (150, 20, 100, 100) specify the position and size of the rectangle.
+            // (150, 20) is the top-left corner of the rectangle, and 100 is the width and height.
+            // This line of code draws a 100x100 pixel rectangle with just the outline starting at the coordinate (150, 20) on the canvas.
+            context.strokeRect(150, 20, 100, 100);
+        // End script
+        </script>
+    <!-- End body -->
+    </body>
+<!-- End HTML document -->
+</html>

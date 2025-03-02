@@ -1,0 +1,53 @@
+<!-- Create an HTML Document in English format -->
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Create the Head of the page -->
+    <head>
+        <!-- Create the Title of the page -->
+        <title></title>
+    <!-- End Head -->
+    </head>
+    <!-- Begin the Body of the page -->
+    <body>
+        <!-- Create a paragraph asking the capitol of Wisconsin -->
+        <p>What is the capitol of Wisconsin?</p>
+        <!-- Create three buttons as optional answers.  Create appropriate class and id for correct and wrong answer -->
+        <button class="wrong-answer">Green Bay</button>
+        <button id="correctanswer">Madison</button>
+        <button class="wrong-answer">Mondovi</button>
+        <!-- Create a paragraph to display the result -->
+        <p id="result"></p>
+        <!-- Create a Script -->
+        <script>
+            // Create a variable for the correct answer button and select the button using correctanswer as an id
+            let CorrectAnswerButton = document.querySelector("#correctanswer");
+            // Create a log of the created variable for dev tool purposes
+            console.log(CorrectAnswerButton);
+            // Create a variable for the default button color and select the background color of the correct answer button
+            let DefaultButtonColor = CorrectAnswerButton.style.backgroundColor;
+            // Create a variable for the result paragraph and select the paragraph
+            let result = document.querySelector("#result");
+            // Create a variable for the wrong answer buttons and select the buttons using the class wrong-answer
+            let WrongAnswerButtons = document.querySelectorAll('.wrong-answer');
+            // Create a forEach loop to add an event listener of click to each wrong answer button
+            WrongAnswerButtons.forEach(function(WrongAnswerButton) {
+                WrongAnswerButton.addEventListener("click", function() {
+                    // Display a message stating the message is wrong and to try again
+                    result.innerHTML = "Wrong Answer!  Please, try again."
+                    // Reset the color of CorrectAnswerButton to the default color
+                    CorrectAnswerButton.style.backgroundColor = DefaultButtonColor;
+                })
+            });
+            // Add an event listener of click to the correct answer button
+            CorrectAnswerButton.addEventListener("click", function() {
+                // Display a message stating the message is correct
+                result.innerHTML = "Correct!";
+                // Change the color of CorrectAnswerButton to green
+                CorrectAnswerButton.style.backgroundColor = "green";
+            });
+        // End Script
+        </script>
+    <!-- End Body -->
+    </body>
+<!-- End HTML -->
+</html>

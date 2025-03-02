@@ -1,0 +1,41 @@
+<!-- Create an HTML Document in English format -->
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Create the Head of the page -->
+    <head>
+        <!-- Create the Title of the page -->
+        <title></title>
+    <!-- End Head -->
+    </head>
+    <!-- Begin the Body of the page -->
+    <body>
+        <!-- Create a paragraph asking the user to move their mouse -->
+        <p id="mouse-me">Move your mouse here, please.</p>
+        <!-- Create a script -->
+            <script>
+                // Create a variable for the mouse count and set it to 0
+                let MouseCount = 0;
+                // Create a variable for the message and select the paragraph with the id mouse-me
+                let message = document.querySelector("#mouse-me");
+                // Add an event listener to the message to count the number of times the mouse hovers over the message
+                message.addEventListener("mouseover", function() {
+                    // Increment the mouse count by 1
+                    MouseCount = MouseCount + 1;
+                    // Display a message for if the mouse has only been hovered over one time
+                    if (MouseCount == 1) {
+                        message.innerHTML = 'The mouse has hovered over the message ' + MouseCount + ' time.';
+                    // Display a message for if the mouse has been hovered over more than one time
+                    } else {
+                        message.innerHTML = "The mouse cursor has hovered over the message " + MouseCount + " times.";
+                    }
+                });
+                // Add an event listener to the message to display a message when the mouse is no longer hovering over the message
+                message.addEventListener("mouseout", function() {
+                message.innerHTML = "The mouse cursor is no longer hovering over the message.";
+                });
+            // End Script
+            </script>
+    <!-- End Body -->
+    </body>
+<!-- End HTML -->
+</html>

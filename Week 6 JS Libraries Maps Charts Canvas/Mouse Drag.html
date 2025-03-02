@@ -1,0 +1,86 @@
+<!-- Create HTML document-->
+<!DOCTYPE html>
+<!-- Start HTML in English -->
+<html lang="en">
+<!-- Start Head -->
+<head>
+    <!-- Set the character set to UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Set the title to Mouse Events -->
+    <title>Mouse Events</title>
+    <!-- Create style tag -->
+    <style>
+    /* Create style for canvas with a 1px black solid border */    
+    #canvas {
+      border: 1px black solid;
+    }
+    /* Close style tag */
+  </style>
+<!-- Start head of html document -->
+</head>
+<!-- Start body of html document -->
+<body>
+<!-- Create paragraph with text Drag the mouse on the canvas -->
+<P>Drag the mouse on the canvas</P>
+<!-- Create canvas element with id canvas, height 400, and width 400 -->
+<canvas id="canvas" height="400" width="400"></canvas>
+<!-- Create script tag -->
+<script>
+    // Get the canvas element
+    let canvas = document.querySelector('#canvas')
+    // Get the 2d context of the canvas
+    let context = canvas.getContext('2d')
+  
+    // Keep track of whether the mouse button has been pressed down or not.
+    // Think of this as whether the user is drawing or not, is their brush on the canvas?
+    let mousedown = false 
+    // canvas.addEventListener('mousedown', function() { ... })
+    // Attaches an event listener to the canvas element. This event listener listens for the mousedown event,
+    // which occurs when the mouse button is pressed down over the canvas.
+    // mousedown = true
+    // Inside the event listener function, this line of code sets the variable mousedown to true when the mousedown event occurs.
+    canvas.addEventListener('mousedown', function() {
+        mousedown = true
+    })
+    // mouseup = false
+    // Inside the event listener function, this line of code sets the variable mouseup to false when the mousedown event occurs.
+    canvas.addEventListener('mouseup', function() {
+        mousedown = false 
+     })
+
+    // If mouse leaves the canvas then stop drawing
+    // canvas.addEventListener('mouseout', function() { ... })
+    // Attaches an event listener to the canvas element. This event listener listens for the mouseout event,
+    // which occurs when the mouse pointer leaves the canvas area.
+    // mousedown = false
+    // Inside the event listener function, this line of code sets the variable mousedown to false when the mouseout
+    canvas.addEventListener('mouseout', function() {
+        mousedown = false
+    })
+    // canvas.addEventListener('mousemove', function() { ... })
+    // Attaches an event listener to the canvas element. This event listener listens for the mousemove event,
+    // which occurs whenever the mouse pointer moves within the canvas area.
+    canvas.addEventListener('mousemove', function() {
+
+    // If the mouse button is not pressed down, do not draw.
+    // if (!mousedown) { return }
+    // Inside the event listener function, this line of code checks if the mousedown variable is false
+    // If the mouse button is not pressed down (mousedown is false), the function returns immediately,
+    // meaning no further action is taken, and drawing does not occur.
+    if (!mousedown) { return }
+
+    // event is a built-in variable, contains the event that triggered this function
+    // get the x, y location of the event
+    let x = event.offsetX
+    let y = event.offsetY   //offsetX, offsetY, may not work in older browsers
+
+    // Draw a filled rectangle centered under the mouse click
+    // x, y is the top left corner, so shift up and left by 5 to center it under the mouse.
+    context.fillRect(x-5, y-5, 10, 10)
+  })
+// Close the script tag
+</script>
+<!-- Close the body tag -->
+</body>
+<!-- Close the HTML document -->
+</html>

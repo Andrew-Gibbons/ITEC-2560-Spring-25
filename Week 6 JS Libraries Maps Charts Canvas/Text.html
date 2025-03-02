@@ -1,0 +1,74 @@
+<!-- Create HTML document -->
+<!DOCTYPE html
+<!-- Create html element with lang attribute set to en -->
+<html lang="en">
+<!-- Create head -->
+    <head>
+        <!-- Set title to Text-->
+        <title>Text</title>
+        <!-- Create style element -->
+        <style>
+        /* Close style */
+        </style>
+    /* Close head */
+    </head>
+    <!-- Create body -->
+    <body>
+            <!-- The canvas element.  Set height and width in HTML, and give it an ID of canvas -->
+            <canvas id="canvas" width="900" height="700"></canvas>
+        <!-- Start script -->
+        <script>
+            // Get the canvas element by ID and set it to the canvas variable
+            let canvas = document.getElementById("canvas")
+            let context = canvas.getContext("2d")
+
+            // Set fill color to blue, draw some text
+            // context.fillStyle = "#0000FF" Sets the fill color for the canvas drawing context to blue (#0000FF).
+            // context.fillText("Blue fill", 10, 10)
+            // Draws the text "Blue fill" at the coordinates (10, 10) on the canvas, using the current fill style (blue).
+            context.fillStyle = "#0000FF"
+            context.fillText("Blue fill", 10, 10)
+
+            // Set stroke to green, draw more text
+            context.strokeStyle = "00FF00"
+            context.strokeText("Green stroke", 40, 40)
+
+            // Change default text size AND font
+            // context.strokeStyle = "#FF00FF"
+            // Sets the stroke color for the canvas drawing context to magenta (#FF00FF).
+            // context.font = "30px Arial" Sets the font size to 30 pixels and the font family to Arial for the text.
+            // context.strokeText("Large purple stroke", 80, 80)
+            // Draws the outlined (stroked) text "Large purple stroke" at the coordinates (80, 80) on the canvas, using the current stroke style (magenta).
+            context.strokeStyle = "#FF00FF"
+            context.font = "30px Arial"
+            context.strokeText("Large purple stroke", 80, 80)
+
+            // context.font = "50px Courier"
+            // Sets the font size to 50 pixels and the font family to Courier for the text.
+            // context.fillStyle = "#FFFF00"
+            // Sets the fill color for the canvas drawing context to yellow (#FFFF00).
+            // context.fillText("Large yellow courier fill", 120, 120)
+            // Draws the text "Large yellow courier fill" at the coordinates (120, 120) on the canvas, using the current fill style (yellow).
+            context.font = "50px Courier"
+            context.fillStyle = "#FFFF00"
+            context.fillText("Large yellow courier fill", 120, 120)
+
+            // Outlines text - fill and stroke
+            // context.fillStyle = "#00FFFF"
+            // Sets the fill color for the canvas drawing context to cyan (#00FFFF).
+            // context.strokeStyle = "#FF0000"
+            // Sets the stroke color for the canvas drawing context to red (#FF0000).
+            // context.fillText("Outlines text", 170, 170)
+            // Draws the text "Outlines text" at the coordinates (170, 170) on the canvas, using the current fill style (cyan).
+            // context.strokeText("Outlines text", 170, 170)
+            // Draws the outlined (stroked) text "Outlines text" at the coordinates (170, 170) on the canvas, using the current stroke style (red).
+            context.fillStyle = "#00FFFF"
+            context.strokeStyle = "#FF0000"
+            context.fillText("Outlines text", 170, 170)
+            context.strokeText("Outlines text", 170, 170)
+        // End script 
+        </script>
+    <!-- Close body -->
+    </body>
+<!-- Close html -->
+</html>

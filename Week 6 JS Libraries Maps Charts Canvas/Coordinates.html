@@ -1,0 +1,57 @@
+<!-- Create HTML document -->
+<!DOCTYPE html>
+<!-- Start html with language English-->
+<html lang="en">
+<!-- Start head -->
+<head>
+    <!-- Set meta charset to UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Create title Canvas Coordinates-->
+    <title>Canvas Coordinates</title>
+    <!-- Create style tag -->
+    <style>
+    /* Create style for canvas with a 1px black solid border */    
+    #canvas {
+      border: 1px black solid;
+    }
+    /* Close style tag */
+    </style>
+<!-- Close head-->
+</head>
+<!-- Start body -->
+<body>
+<!-- Create h2 tag with text Move your mouse over the canvas -->
+<h2>Move your mouse over the canvas</h2>
+<!-- Create p tag with text Your mouse coordinates are: and span tag with id coordinates -->
+<p>Your mouse coordinates are: <span id="coordinates"></span></p>
+<!-- Create canvas tag with id canvas, height 500 and width 600 -->
+<canvas id="canvas" height="500" width="600"></canvas>
+<!-- Create script tag -->
+<script>
+    // Get the canvas element
+    let canvas = document.getElementById("canvas")
+    // Add an event listener to the canvas element listening for mousemove event and a showCoords function
+    canvas.addEventListener("mousemove", showCoords)
+    // Create a function showCoords
+    function showCoords() {
+    // event is a built-in object with information
+    // about the event that triggered this function
+      let x = event.offsetX
+      let y = event.offsetY
+    
+      // This JavaScript code snippet updates the text content of an HTML element with the ID coordinates to display the current mouse coordinates.
+      // let span = document.getElementById("coordinates")
+      // Selects the HTML element with the ID coordinates and assigns it to the variable span.
+      // span.innerText = "Mouse x = " + x + " mouse Y = " + y
+      // Sets the text content of the span element to display the current mouse coordinates, 
+      // where x and y are variables representing the mouse's x and y positions.
+      let span = document.getElementById("coordinates")
+      span.innerText = "Mouse x = " + x + " mouse Y = " + y
+
+    }
+    // Close script tag
+</script>
+<!-- Close body -->
+</body>
+<!-- Close html -->
+</html>

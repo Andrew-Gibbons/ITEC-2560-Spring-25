@@ -1,0 +1,82 @@
+<!-- Create HTML document-->
+<!DOCTYPE html>
+<!-- Create html element with lang attribute set to en -->
+<html lang="en">
+<!-- Create head -->
+<head>
+    <!-- Set the character set to UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- name="viewport" Specifies that the meta tag is related to the viewport. -->
+    <!-- content="width=device-width Sets the width of the viewport to be equal to the width of the device's screen. -->
+    <!-- This means that the page will scale to fit the screen size of the device.  -->
+    <!-- initial-scale=1.0 Sets the initial zoom level when the page is first loaded. A scale of 1.0 means that -->
+    <!-- the page is shown at its natural size without any zoom. --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title Bridge Spans Bar Chart-->
+    <title>Bridge Spans Bar Chart</title>
+    <!-- Link to the Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Create head -->
+</head>
+<!-- Create body -->
+<body>
+    <!-- Create h2 element with text Bridge Spans Bar Chart -->
+    <h2>Bridge Spans Bar Chart</h2>
+    <!-- Create canvas element with id bridgeChart -->
+    <canvas id="bridgeChart"></canvas>
+    <!-- Create script element -->
+    <script>
+        // Get the canvas element with id bridgeChart and set it to the ctx variable
+        const ctx = document.getElementById('bridgeChart').getContext('2d');
+        // Create a new Chart object with the ctx variable and set it to the bridgeChart variable
+        const bridgeChart = new Chart(ctx, {
+            // Set the type of the chart to bar
+            type: 'bar',
+            // Set the data for the chart
+            data: {
+                // Set the labels for the x-axis
+                labels: ['Verrazzano-Narrows Bridge', 'Golden Gate Bridge', 'Mackinac Bridge', 'George Washington Bridge', 'Tacoma Narrows Bridge'],
+                // Set the datasets for the chart
+                datasets: [{
+                    // Set the label for the dataset
+                    label: 'Span (meters)',
+                    // Set the data for the dataset
+                    data: [1298.4, 1280.2, 1158.0, 1067.0, 853.44],
+                    // Set the background color for the bars in the chart
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    // Set the border color for the bars in the chart 
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    // Set the border width for the bars in the chart
+                    borderWidth: 1
+                }]
+            },
+            // Set the options for the chart
+            options: {
+                // Set the scales for the chart 
+                scales: {
+                    // Set the y-axis scale
+                    y: {
+                        // Set where the y-axis starts
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    // Close script element    
+    </script>
+<!-- Close body -->
+</body>  
+<!-- Close html -->
+</html>     

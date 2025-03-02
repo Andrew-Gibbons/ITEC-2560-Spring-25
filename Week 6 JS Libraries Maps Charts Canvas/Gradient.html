@@ -1,0 +1,59 @@
+<!-- Create HTML document -->
+<!DOCTYPE html>
+<!-- Sett language to English -->
+<html lang="en">
+    <!-- Start head -->
+    <head>
+        <!-- Set title to Gradient-->
+        <title>Gradient</title>
+
+        <style>
+
+        </style>
+    <!-- Start head -->
+    </head>
+    <!-- Start body -->
+    <body>
+            <!-- The canvas element.  Set height and width in HTML, and give it an ID -->
+            <canvas id="canvas_horiz" width="900" height="700"></canvas>
+        <!-- Start Script -->
+        <script>
+            // This JavaScript code snippet is selecting an HTML element by its id attribute and assigning it to the variable c_h.
+            // document represents the webpage's document object model (DOM).
+            // getElementById("canvas_horiz") is a method that returns the element with the ID "canvas_horiz".
+            let c_h = document.getElementById("canvas_horiz")
+            // This JavaScript code snippet is setting up the 2D rendering context for a <canvas> element.
+            // c_h is a reference to the HTML <canvas> element with the ID "canvas_horiz", which we selected earlier.
+            // getContext("2d") is a method that returns a drawing context on the canvas.
+            let ctx_h = c_h.getContext("2d")
+
+            // Create a gradient
+            // Left to right 0 to 300
+            // This JavaScript code snippet creates a linear gradient for the 2D drawing context on the canvas.
+            // ctx_h is the 2D drawing context we obtained earlier.
+            // createLinearGradient(0, 0, 300, 0) creates a linear gradient
+            // The parameters (0, 0, 300, 0) specify the starting point (x0, y0) and the ending point (x1, y1) of the gradient.
+            let gradient_h = ctx_h.createLinearGradient(0, 0, 300, 0)
+
+            // Need at least two color stops.  First argument is where color starts
+            // Values need to be in range 0 to 1
+            gradient_h.addColorStop(0, "green") // green at 0 pixels along dotted ;ine
+            gradient_h.addColorStop(0.5, "blue") // blue in the middle
+            gradient_h.addColorStop(1, "purple") // purple at 300 pixels along gradient
+
+            // Once the gradient is configured, set it as the fill style
+            ctx_h.fillStyle = gradient_h
+
+            // And a fill rectangle with it
+            // This JavaScript code snippet draws a filled rectangle on the canvas.
+            // ctx_h is the 2D drawing context we set up earlier.
+            // fillRect(0, 0, 300, 300) draws a rectangle filled with the current fill style (e.g., color, gradient, or pattern) on the canvas
+            // The parameters (0, 0, 300, 300) specify the position and size of the rectangle. (0, 0) is the top-left corner of the rectangle,
+            // 300 is the width and height.
+            ctx_h.fillRect(0, 0, 300, 300)
+        // End Script
+        </script>
+    <!-- End body -->
+    </body>
+<!-- End HTML document -->
+</html>

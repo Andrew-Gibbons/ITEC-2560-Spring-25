@@ -1,0 +1,57 @@
+<!-- Create HTML document-->
+<!DOCTYPE html>
+<!-- Start HTML document in English-->
+<html lang="en">
+<!-- Start head element -->
+<head>
+    <!-- Set meta to UTF-8-->
+    <meta charset="UTF-8">
+    <!-- Create title Mouse Events -->
+    <title>Mouse Events</title>
+    <!-- Start style -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        /* canvas id has a 1 px border that is black solid */
+        #canvas {
+        border: 1px black solid;
+        }
+        /* Close style */
+        </style>
+    <!-- Start head element-->
+    </head>
+<!-- Start body of html document -->
+<body>
+
+<!-- Create a paragraph with text Click the mouse on the canvas-->
+<P>Click the mouse on the canvas</P>
+<!-- Create canvas with an id of canvas, height 400, and width 400 -->
+<canvas id="canvas" height="400" width="400"></canvas>
+<!-- Start script -->
+<script>
+    // let canvas = document.getElementById("canvas")
+    // Selects the HTML <canvas> element with the ID canvas and assigns it to the variable canvas.
+    // let context = canvas.getContext("2d")
+    // Gets the 2D drawing context for the selected canvas element and assigns it to the variable context.
+    let canvas = document.getElementById("canvas")
+    let context = canvas.getContext("2d")
+        // canvas.addEventListener("click", function drawSquare(){ ... })
+        // Attaches an event listener to the canvas element that listens for the click event, which occurs when the canvas is clicked.
+        // The drawSquare function (defined inside the curly braces { ... }) will be executed when the click event is triggered.
+        canvas.addEventListener("click", function drawSquare(){
+        // event is a built-in variable, refering to the event that triggered this function
+        // get the x, y location of the event
+        let x = event.offsetX
+        let y = event.offsetY   //offsetX, offsetY, may not work in older browsers
+
+    // Draw a filled 10x10 rectangle centered under the mouse click
+    // x, y is the top left corner, so shift up and left by 5 to center it under the mouse.
+    context.fillRect(x-5, y-5, 10, 10)
+  })
+// End script
+</script>
+<!-- Close body tag -->
+</body>
+<!-- Close HTML-->
+</html>

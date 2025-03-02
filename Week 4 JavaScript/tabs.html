@@ -1,0 +1,68 @@
+<!-- Create an HTML Document in English format -->
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Create the Head of the page -->
+    <head>
+        <!-- Create the Title of the page -->
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="Tabs styles.css"/>
+    <!-- End Head -->
+    </head>
+    <!-- Begin the Body of the page -->
+    <body>
+    <!-- Create a Heading 1 with Favorite Foods as the text -->
+    <h1>Favorite Foods</h1>
+    <!-- Create a Div with an id of tabs -->
+    <div id="tabs">
+        <!-- Create three buttons with data-content-ids of pizza, cheesecake, and sushi -->
+         <!-- And class of tab-button -->
+        <button data-content-id="pizza" class="tab-button">Pizza</button>
+        <button data-content-id="cheesecake" class="tab-button">Cheesecake</button>
+        <button data-content-id="sushi" class="tab-button">Sushi</button>
+    <!-- End Div -->
+    </div>
+    <!-- Create three Divs with ids of pizza, cheesecake, and sushi -->
+     <!-- And class of tab-content -->
+    <div id="pizza" class="tab-content">Pizza is awesome!</div>
+    <div id="cheesecake" class="tab-content">Cheesecake is delicious!</div>
+    <div id="sushi" class="tab-content">Sushi is amazing!</div>
+    <!-- Create Script-->
+    <script>
+        // Create variables buttons and tabContents as querySelectorAll for .tab-button and .tab-content
+        let buttons = document.querySelectorAll(".tab-button")
+        let tabContents = document.querySelectorAll(".tab-content")
+        // Create a forEach for tabContents to set display as empty text
+        tabContents.forEach(function(divEl) {
+            divEl.style.display = "none"
+        })
+        // Set tabContents style.display to block and add active class to buttons
+        tabContents[0].style.display = "block"
+        buttons[0].classList.add("active")
+        // Create a forEach for buttons to add an eventListener for click
+        buttons.forEach( function(button) {
+            button.addEventListener("click", function() {
+                // Clear the text of for each click function (?)
+                tabContents.forEach(function(divEl) {
+                    divEl.style.display = "none"
+                })  
+                // Remove active class from buttons
+                buttons.forEach(function(button) {
+                    button.classList.remove("active")
+                })
+                // Add active class to clicked button
+                this.classList.add("active")
+                // Create variable contentID with a this function (meaning generated for each executed function)
+                let contentId = this.getAttribute("data-content-id")
+                // Create a variable as tabContent to document a concatenated string of # and contentId
+                // for the class contentID traced back to each button
+                let tabContent = document.querySelector("#" + contentId)
+                // Set tabContent style.display to block
+                tabContent.style.display = "block"
+            })
+        })
+        // End Script
+    </script>
+    <!-- End Body -->
+    </body>
+<!-- End HTML -->
+</html>

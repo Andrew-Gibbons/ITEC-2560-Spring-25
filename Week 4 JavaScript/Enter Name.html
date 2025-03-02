@@ -1,0 +1,45 @@
+<!-- Create an HTML Document in English format -->
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Create the Head of the page -->
+    <head>
+        <!-- Create the Title of the page -->
+        <title></title>
+    <!-- End Head -->
+    </head>
+    <!-- Begin the Body of the page -->
+    <body>
+        <!-- Create a paragraph with Enter your name: as text-->
+        <p>Enter your name:</p>
+        <!-- Create a text input with the id of name -->
+        <input type="text" id="name">
+        <!-- Create a button with the id of save-user-name and Save as text -->
+        <button id="save-user-name">Save</button>
+        <!-- Create a paragraph with the id of welcome-message -->
+        <p id="welcome-message"></p>
+    <!-- Create Script -->
+    <script>
+        // Create variables for the button, input, and welcome message
+        let saveButton = document.querySelector("#save-user-name")
+        let nameInput = document.querySelector("#name")
+        let welcomeMessage = document.querySelector("#welcome-message")
+        // Add an event listener to the button
+        saveButton.addEventListener('click', function() {
+            let name = nameInput.value;
+            // Check if the name is less than 2 characters
+            if (name.length < 2) {
+                welcomeMessage.innerHTML = 'Please enter a name with at least two characters.'
+            }
+            // Else display the welcome message
+            else {
+                welcomeMessage.innerHTML = `Welcome, ${name}!`
+            // welcomeMessage.innerHTML = "Welcome, " + name + "!" // This is the same as the line above, but uses a different method to concatenate strings
+            }
+            
+        })
+    // End Script
+    </script>
+    <!-- End Body -->
+    </body>
+    <!-- End HTML -->
+</html>

@@ -1,0 +1,85 @@
+<!-- Create HTML document -->
+<!DOCTYPE html>
+<!-- Start HTML -->
+<html>
+<!-- Start Head -->
+<head>
+    <!-- Set meta charset utf-8 -->
+    <meta charset="utf-8">
+    <!-- Highlight script and CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <!-- Start script -->
+    <script>
+        // Initialize highlighting
+        hljs.initHighlightingOnLoad()
+    // End script
+    </script>
+<!-- End head of document -->
+</head>
+<!-- Start body of document -->
+<body>
+    <!-- Create h1 element with text The Python Programming Language -->
+    <h1>The Python Programming Language</h1>
+    <!-- HTML Structure:
+        <pre>:
+        This tag is used to display preformatted text. Text inside a <pre> element is displayed in a fixed-width font, and whitespace
+        (including line breaks) is preserved.
+        <code>:
+        This tag is used to display a block of code. It typically appears inside a <pre> element to format the code correctly.
+        Class Attribute:
+        class="python":
+        This class attribute suggests that the code block is written in Python. It can be used by syntax highlighting libraries
+        (such as Prism.js or Highlight.js) to apply syntax highlighting to the code block.
+        Python Code: The Python code inside the <code> block iterates over each character in the string "abc" and prints the
+        uppercase version of each character. Specifically, it prints "A", "B", and "C" on separate lines. -->
+    <pre><code class="python">
+        for character in "abc":
+            print(character.upper())  # Prints A, then B, then C
+    </code></pre>
+    <!-- Create h1 element with text The C# Programming Language -->
+    <h1>The C# Programming Language</h1>
+    <!-- HTML Structure:
+        <pre>: This tag is used to display preformatted text. Text inside a <pre> element is displayed in a fixed-width font,
+        and whitespace (including line breaks) is preserved.
+        <code>: This tag is used to display a block of code. It typically appears inside a <pre> element to format the code correctly.
+        Class Attribute:
+        class="csharp": This class attribute suggests that the code block is written in C#. It can be used by syntax highlighting libraries
+        (such as Prism.js or Highlight.js) to apply syntax highlighting to the code block.
+        C# Code:The C# code inside the <code> block defines a Cat class with a speak method. The speak method prints "Meow!" to the console. -->
+    <pre><code class="csharp">
+        public class Cat {
+
+            // Method of the Cat class 
+            
+            public void speak() {
+                Console.writeline("Meow!");
+            }
+        }
+    </code></pre>
+
+    <!-- <pre>: This tag is used to display preformatted text. Text inside a <pre> element is displayed in a fixed-width font,
+        and whitespace (including line breaks) is preserved.
+        <code>: This tag is used to display a block of code. It typically appears inside a <pre> element to format the code correctly.
+        Class Attribute:
+        class="java": This class attribute suggests that the code block is written in Java. It can be used by syntax highlighting libraries
+        (such as Prism.js or Highlight.js) to apply syntax highlighting to the code block.
+        Java Code:The Java code inside the <code> block defines an array of strings called names and uses a for-each loop to print each
+        name in the array. (?)However, there is a syntax error in the for-each loop.(?) -->
+    <h1>The Java Programming Language</h1>
+    
+    <pre><code class="java">
+
+        String[] names = { "Zoe", "Chloe", "Joey"};
+
+        // Print all of the names in the array 
+
+        for (String name in names) {
+            System.out.println(name);
+        }
+    </code></pre>
+
+<!-- Close body of document-->
+</body>
+<!-- Close HTML document -->
+</html>

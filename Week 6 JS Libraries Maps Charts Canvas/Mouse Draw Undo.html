@@ -1,0 +1,209 @@
+<!-- Create HTML document -->
+<!DOCTYPE html>
+<!-- Start HTML in English -->
+<html lang="en">
+<!-- Start Head -->
+<head>
+    <!-- Set the character set to UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Set the title to Mouse Events -->
+    <title>Mouse Draw Events</title>
+    <!-- Create style tag -->
+    <style>
+    /* Create style for canvas with a 1px black solid border */    
+    #canvas {
+      border: 1px black solid;
+    }
+    /* Close style tag */
+  </style>
+<!-- Start head of html document -->
+</head>
+<!-- Start body of html document -->
+<body>
+<!-- Create paragraph with text Drag the mouse on the canvas -->
+<p>Drag the mouse on the canvas</p>
+<!-- Create canvas element with id canvas, height 400, and width 400 -->
+<canvas id="canvas" height="400" width="400"></canvas>
+<!-- Create div element with button id undo and text Undo-->
+<div>
+  <button id=undo>Undo</button>
+<!-- Close div element -->
+</div>
+<!-- Create script tag -->
+<script>
+    // Get the canvas element
+    let canvas = document.getElementById('canvas')
+    // Get the 2d context of the canvas
+    let context = canvas.getContext('2d')
+    // This JavaScript code snippet selects an HTML element with the ID undo from the DOM and assigns it to the variable undoButton.
+    // let undoButton = document.querySelector('#undo')
+    // Uses document.querySelector('#undo') to find the first HTML element with the ID undo.
+    // Assigns this element to the variable undoButton.
+    // After this code runs, undoButton will reference the HTML element with the ID undo.
+    // You can then add event listeners or manipulate this element in various ways.
+    let undoButton = document.querySelector('#undo')
+
+    // Stores all the versions of the drawing the user has made. 
+    let history = []
+  
+    // Keep track of whether the mouse button has been pressed down or not.
+    // Think of this as whether the user is drawing or not, is their brush on the canvas?
+    let mousedown = false 
+
+    // This JavaScript code snippet adds an event listener to the canvas element that listens for the mousedown event and initiates
+    // drawing when the mouse button is pressed down.
+    // canvas.addEventListener('mousedown', function() { ... })
+    // Attaches an event listener to the canvas element that listens for the mousedown event,
+    // which occurs when the mouse button is pressed down over the canvas.
+    // mousedown = true
+    // Inside the event listener function, this line of code sets the variable mousedown to true when the mousedown event occurs,
+    // indicating that the mouse button is pressed down.
+    // let x = event.offsetX
+    // Retrieves the x-coordinate of the mouse pointer relative to the canvas when the mousedown event occurs and assigns it to the variable x.
+    // let y = event.offsetY
+    // Retrieves the y-coordinate of the mouse pointer relative to the canvas when the mousedown event occurs and assigns it to the variable y.
+    // draw(x, y)
+    // Calls the draw function with the x and y coordinates of the mouse pointer. This function will presumably perform
+    // drawing operations on the canvas at the specified coordinates.
+    canvas.addEventListener('mousedown', function() {
+        mousedown = true
+        let x = event.offsetX
+        let y = event.offsetY  
+        draw(x, y)
+    })
+
+    // This JavaScript code snippet adds an event listener to the canvas element that listens for the mouseup event and stops drawing
+    // when the mouse button is released.
+    // canvas.addEventListener('mouseup', function() { ... })
+    // Attaches an event listener to the canvas element that listens for the mouseup event,
+    // which occurs when the mouse button is released over the canvas.
+    // mousedown = false
+    // Inside the event listener function, this line of code sets the variable mousedown to false when the mouseup event occurs,
+    // indicating that the mouse button is no longer pressed down.
+    // saveHistory()
+    // Calls the saveHistory function, which presumably saves the current state of the drawing to a history array.
+
+    canvas.addEventListener('mouseup', function() {
+        mousedown = false
+        saveHistory() 
+    })
+
+
+    // If mouse leaves the canvas then stop drawing
+    // canvas.addEventListener('mouseout', function() { ... })
+    // Attaches an event listener to the canvas element that listens for the mouseout event,
+    // which occurs when the mouse pointer leaves the canvas.
+    // mousedown = false
+    // Inside the event listener function, this line of code sets the variable mousedown to false when the mouseout event occurs,
+    // indicating that the mouse button is no longer pressed down.
+    // saveHistory()
+    // Calls the saveHistory function, which presumably saves the current state of the drawing to a history array.
+    canvas.addEventListener('mouseout', function() {
+        mousedown = false
+        saveHistory()
+    })
+
+
+    canvas.addEventListener('mousemove', function() {
+        // Only draw if the mouse button is pressed down.
+        if (mousedown) {
+        // event is a built-in variable, contains the event that triggered this function
+        // get the x, y location of the event
+        let x = event.offsetX
+        let y = event.offsetY   //offsetX, offsetY, may not work in older browsers
+        draw(x, y)
+        }
+    })
+
+    // This JavaScript code snippet adds an event listener to the undoButton element that listens for the click event and undoes the last drawing.
+    // undoButton.addEventListener('click', function() { ... })
+    // Attaches an event listener to the undoButton element that listens for the click event,
+    // which occurs when the user clicks the button.
+    // undoHistory()
+    // Calls the undoHistory function, which presumably undoes the last drawing on the canvas.
+    undoButton.addEventListener('click', function(){
+        undoHistory()
+    })
+
+    // This JavaScript code snippet defines the draw function, which draws a filled rectangle centered under the mouse click.
+    // function draw(x, y) { ... }
+    // Defines a function named draw that takes two parameters, x and y.
+    function draw(x, y) {
+    //Draw a filled rectangle centered under the mouse click
+    //x, y is the top left corner, so shift up and left by 5 to center it under the mouse.
+    context.fillRect(x-5, y-5, 10, 10)
+    hasJustDrawn = true   // record that user has just drawn - used by undo
+  }
+
+    // This JavaScript code snippet defines the saveHistory function, which saves the current state of the drawing to a history array.
+    // function saveHistory() { ... }
+    // Defines a function named saveHistory that saves the current state of the drawing to a history array.
+    function saveHistory() {
+        let picture = canvas.toDataURL()  // convert image to data representation
+        if (history[history.length - 1] != picture) {   // if it's not already saved...
+        history.push(picture)  // add to history array
+        }
+    }
+
+    // This JavaScript code snippet defines the undoHistory function, which undoes the last drawing on the canvas.
+    function undoHistory() {
+
+    /* if the user has just drawn, need to remove the last drawing from the history; and then remove 
+      the image before that and draw it on the canvas.
+
+      So if user has just drawn, history could be [img0, img1, img2, img3]
+      pop img3
+      Draw img2 on the canvas
+
+      If the user hasn't just drawn - for example, they are clicking the undo button several times to
+      undo a series of lines - then remove the last image from history and draw that 
+
+      So history could be [img0, img1, img2]
+      Pop img2 
+      Draw img1 on the canvas
+
+      */
+        // This JavaScript code snippet is part of an undo functionality.
+        // history.pop()
+        // Removes the last element from the history array. This action effectively "undos" the most recent state or action.
+        // let previousPicture = history[history.length - 1]
+        // Retrieves the new last element of the history array after the pop operation, which represents the previous state or picture.
+        // This element is assigned to the variable previousPicture.
+        history.pop()
+        let previousPicture = history[history.length - 1]
+        // context.clearRect(0, 0, canvas.width, canvas.height)
+        // Clears the entire canvas by erasing the contents within the specified rectangle.
+        // The rectangle covers the whole canvas from (0, 0) to (canvas.width, canvas.height).
+        // if (previousPicture) {
+        // Checks if the previousPicture variable is truthy (i.e., it exists and is not null or undefined).
+        // If previousPicture is true, the code inside the if block will execute.
+        // The purpose of this code is to clear the canvas and then, if there is a previous picture saved in the previousPicture variable,
+        // perform further actions to possibly redraw or restore this previous picture on the canvas.
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        if (previousPicture) {
+        // Create an image from the previous picture and draw it on the canvas
+        // This JavaScript code snippet creates a new image element, sets its source to a previously saved picture,
+        // and draws the image onto the canvas once it has loaded.
+        // let image = new Image()
+        // Creates a new Image object and assigns it to the variable image.
+        // image.src = previousPicture
+        // Sets the source of the image object to the previousPicture variable, which contains the data or URL of the previously saved picture.
+        // image.addEventListener('load', function() { ... })
+        // Attaches an event listener to the image object that listens for the load event. The load event occurs when the image has fully loaded.
+        // context.drawImage(this, 0, 0)
+        // Inside the event listener function, this line of code draws the loaded image onto the canvas at the coordinates (0, 0).
+        // The this keyword refers to the image object that triggered the load event.
+        // In essence, this code snippet ensures that the previousPicture image is drawn onto the canvas once it has fully loaded.
+        let image = new Image()
+        image.src = previousPicture
+        image.addEventListener('load', function() {
+            context.drawImage(this, 0, 0)
+        })
+        }
+    }
+// Close script tag
+</script>
+<!-- Close body tag -->
+</body>
+<!-- Close html tag -->
+</html>

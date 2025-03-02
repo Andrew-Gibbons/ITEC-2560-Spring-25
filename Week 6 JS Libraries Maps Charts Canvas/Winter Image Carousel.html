@@ -1,0 +1,60 @@
+<!-- Create HTML document-->
+<!DOCTYPE html>
+<!--Start HTML -->
+<html>
+<!--Start head of document -->
+<head>
+
+    <!-- Flickity JS and CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- Start style -->
+    <style>
+        /* Set the background color */
+        body {
+            background: lightblue;
+        }
+        /* End style */ 
+    </style>
+<!-- End head of document -->
+</head>
+<!-- Start body of document -->
+<body>
+<!-- Heading 1 text of Flickity Carousel of Winter Photographs -->
+<h1>Flickity Carousel of Winter Photographs</h1>
+<!-- Paragraph text of You can find the Flickity documentation, and more examples here Flickity -->
+<div>
+    <p>You can find the Flickity documentation, and more examples here <a href="https://flickity.metafizzy.co/">Flickity</a></p>
+    <p>Photographs by Aaron Burden, David Zawila, and Thomas Lipke, via <a href="https://unsplash.com">Unsplash.</a></p>
+
+</div>
+<!-- Create div with class main-carousel -->
+<div class="main-carousel">
+    <!-- Create div with class carousel-cell and various images -->
+    <div class="carousel-cell"><img src="img/aaron-burden-bubble.jpg"></div>
+    <div class="carousel-cell"><img src="img/dawid-zawila-landscape.jpg"></div>
+    <div class="carousel-cell"><img src="img/aaron-burden-snowflake.png"></div>
+    <div class="carousel-cell"><img src="img/thomas-lipke-sled-dogs.jpg"></div>
+</div>
+<!-- Start script -->
+<script>
+    // let flickity = new Flickity( '.main-carousel', { wrapAround: true, autoPlay: true }):
+    // This line creates a new Flickity carousel instance and assigns it to the variable flickity.
+    // '.main-carousel':
+    // This is a CSS selector that targets the HTML element with the class main-carousel.
+    // { wrapAround: true, autoPlay: true }:
+    // This is an options object passed to the Flickity constructor.
+    // It contains two options:
+    // wrapAround: true:This option enables infinite scrolling for the carousel, allowing users to scroll through the items continuously.
+    // autoPlay: true: This option enables automatic playback of the carousel, meaning the carousel will automatically advance to the next slide after a certain interval.
+    let flickity = new Flickity( '.main-carousel', {
+        // Options go here - see Flickity documentation
+        wrapAround: true,
+        autoPlay: true    // animate
+    })
+// End script
+</script>
+<!-- End body of document -->
+</body>
+<!-- End HTML -->
+</html>

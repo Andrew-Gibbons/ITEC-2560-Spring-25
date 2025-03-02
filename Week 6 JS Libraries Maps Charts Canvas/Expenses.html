@@ -1,0 +1,55 @@
+<!-- Create html document with a form to add expenses to a chart -->
+<!DOCTYPE html>
+<!-- Start HTML -->
+<html>
+<!-- Set language to English -->
+<html lang="en">
+<!-- Set the character set to UTF-8 -->
+<meta charset="UTF-8">
+<!-- Set the viewport to the width of the device and initial scale to 1.0 -->   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Set the title of the page to Expenses -->
+<title>Expenses</title>
+<!-- Start head -->
+<head>
+
+    <!-- Add Chart.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>\
+    <!-- Add the JavaScript file that will create the chart -->
+    <script async defer src="expenses_chart.js"></script>
+    <!-- Add Bootstrap CSS library -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<!-- Create body with class p-5 -->
+<body class="p-5">
+    <!-- Add a heading with class text-center -->
+    <h1 class="text-center">Build a chart of your monthly expenses</h1>
+    <!-- Add a canvas element with id expenses-doughnut-chart -->
+    <canvas id="expenses-doughnut-chart"></canvas>
+    <!-- Create a div with class form-group row.-->
+    <div class="form-group row">
+        <!-- Create label Expense Type -->
+        <label class="form-label">Expense Type</label>
+        <!-- Create an input with id expense-name, and a class form-control -->
+        <input id="expense-name" class="form-control">
+    <!-- End div -->
+    </div>
+    <!-- Create a div with class form-group row.-->
+    <div class="form-group row">
+        <!-- Create label Amount -->
+        <label class="form-label">Amount</label>
+        <!-- Create an input with id expense-amount, and a class form-control, and type number -->
+        <input id="expense-amount" class="form-control" type="number">
+    <!-- End div -->
+    </div>
+    <!-- Create a div with class form-group row -->
+    <div class="form-group row">
+        <!-- Add to chart button with an id of add-expense, class of btn btn-info-->
+        <button id="add-expense" class="btn btn-info">Add to chart</button>
+    <!-- End div -->
+    </div>
+<!-- End body -->
+</body>
+<!-- End html-->
+</html>

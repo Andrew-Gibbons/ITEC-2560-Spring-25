@@ -1,0 +1,116 @@
+<!-- Create HTML document -->
+<!DOCTYPE html>
+<!-- Start HTML -->
+<html>
+<!-- Start head-->
+<head>
+    <!-- Set the title as Longest US Bridges -->
+    <title>Longest US Bridges</title>
+    <!-- links to Leaflet for their library of images-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<!-- End head -->
+</head>
+<!-- Start body -->
+<body>
+    <!-- Create a div with id map to hold the map -->
+    <div id="map" style="height: 600px;"></div>
+<!-- End body -->
+</body>
+    <!-- Add a script tag to hold any JavaScript -->
+    <script>
+        
+    // Initialize the map and set its view to the geographical center of the USA with a zoom level
+    // This JavaScript code snippet initializes a map using the Leaflet library.
+    // var map = L.map('map') creates a map instance and attaches it to the HTML element with the ID map.
+    // .setView([39.8283, -98.5795], 4) sets the initial geographical center of the map and the zoom level
+    // In this case, the map is centered on the coordinates 39.8283 (latitude) and -98.5795 (longitude), 
+    // which is roughly the geographic center of the contiguous United States. 
+    // The zoom level is set to 4.
+    var map = L.map('map').setView([39.8283, -98.5795], 4);
+
+    // This JavaScript code snippet is creating a custom icon for a Leaflet map.
+    // var downloadBridge = L.icon({ ... }) creates a new icon object using Leaflet's L.icon function and assigns it to the variable downloadBridge.
+    // iconUrl: 'download_bridge.png' specifies the URL of the image file to be used as the icon.
+    // You can add more properties to this L.icon object to customize the icon further, such as iconSize, iconAnchor, and popupAnchor.
+    var downloadBridge = L.icon({
+        iconUrl: 'download_bridge.png',
+        iconSize:     [38, 95], // size of the icon
+        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    // var longestBridge = L.icon.extend({
+        // options: {
+        // iconUrl: 'longest_bridge.png',
+        // iconSize:     [38, 95], // size of the icon
+        // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        // popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+       //  }
+    // });
+
+    // This JavaScript code snippet adds markers to the map for each of the five longest bridges in the United States.
+    // L.marker([40.6066, -74.0447], {icon: downloadBridge}).addTo(map) creates a marker at the coordinates [40.6066, -74.0447]
+        L.marker([40.6066, -74.0447], {icon: downloadBridge}).addTo(map);
+        L.marker([37.8199, -122.4783], {icon: downloadBridge}).addTo(map);
+        L.marker([45.8174, -84.7278], {icon: downloadBridge}).addTo(map);
+        L.marker([40.8517, -73.9527], {icon: downloadBridge}).addTo(map);
+        L.marker([47.2690, -122.5517], {icon: downloadBridge}).addTo(map);
+
+    
+// Add the OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+// Data for the bridges
+var bridges = [
+    {
+        name: "Verrazzano-Narrows Bridge",
+        city: "New York, NY",
+        span: 1298.4,
+        location: [40.6066, -74.0447]
+    },
+    {
+        name: "Golden Gate Bridge",
+        city: "San Francisco and Marin, CA",
+        span: 1280.2,
+        location: [37.8199, -122.4783]
+    },
+    {
+        name: "Mackinac Bridge",
+        city: "Mackinaw and St Ignace, MI",
+        span: 1158.0,
+        location: [45.8174, -84.7278]
+    },
+    {
+        name: "George Washington Bridge",
+        city: "New York, NY and New Jersey, NJ",
+        span: 1067.0,
+        location: [40.8517, -73.9527]
+    },
+    {
+        name: "Tacoma Narrows Bridge",
+        city: "Tacoma and Kitsap, WA",
+        span: 853.44,
+        location: [47.2690, -122.5517]
+    }
+];
+
+// Add markers for each bridge
+// bridges.forEach(function(bridge) { ... })
+//This loops through each bridge object in the bridges array.
+// L.marker(bridge.location)
+// For each bridge, this creates a new marker at the bridge.location, which is an array containing the latitude and longitude.
+// .addTo(map)
+// Adds the marker to the map.
+// .bindPopup('<b>' + bridge.name + '</b><br>Span: ' + bridge.span + ' meters')
+//Binds a popup to the marker with the bridge.name displayed in bold, and the bridge.span (span of the bridge in meters) below it.
+bridges.forEach(function(bridge) {
+    L.marker(bridge.location)
+        .addTo(map)
+        .bindPopup('<b>' + bridge.name + '</b><br>Span: ' + bridge.span + ' meters');
+});
+// End script
+</script>
+<!-- End HTML -->
+</html>

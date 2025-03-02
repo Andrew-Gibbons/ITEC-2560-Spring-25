@@ -1,0 +1,50 @@
+<!-- Start HTML document-->
+<!DOCTYPE html>
+<!-- Set language to English -->
+<html lang="en">
+    <!-- Start head -->
+    <head>
+        <!-- Set the title as Lines -->
+        <title>Lines</title>
+        <!-- Add a style tag to hold any CSS -->
+        <style>
+        /* End style */    
+        </style>
+    <!-- End head -->
+    </head>
+    <!-- Start body -->
+    <body>
+            <!-- The canvas element.  Set height and width in HTML, and give it an ID of canvas -->
+            <canvas id="canvas" width="500" height="500"></canvas>
+        <!-- Add a script tag to hold any JavaScript -->
+        <script>
+            // Get the canvas element and the context
+            let canvas = document.getElementById("canvas")
+            let context = canvas.getContext("2d")
+
+            // Reset any previous lines and start a new path
+            context.beginPath()
+            // Use moveTo ro define the start point of a line
+            context.moveTo(10, 10)
+            // Use lineTo to define the end point of a line
+            context.lineTo(300, 300)
+            // Use stroke to draw the line
+            context.stroke()
+
+            // Can draw many line segments
+            // Start with beginPath and moveTo call
+            // Call stroke to actually draw
+            context.beginPath()
+            context.moveTo(200, 300)
+            context.lineTo(200, 100)
+            context.lineTo(60, 100)
+            context.lineTo(200, 300)
+            context.strokeStyle = "blue"
+            context.lineWidth = 5
+            context.stroke()
+        // End script
+        </script>
+    <!-- End body -->
+        </body>
+<!-- End HTML -->
+</html>

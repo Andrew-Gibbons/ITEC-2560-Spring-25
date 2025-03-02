@@ -1,0 +1,47 @@
+<!-- Start HTML Document-->
+<!DOCTYPE html
+<html lang="en">
+    <!-- Start Head-->
+    <head>
+        <!-- Set the character set to UTF-8-->
+        <meta charset="UTF-8">
+        <!-- Set the viewport to the width of the device and initial scale to 1.0-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Set the title of the page to Circles-->
+        <title>Circles</title>
+    <!-- End Head -->    
+    </head>
+    <!-- Start Body -->
+    <body>
+            <!-- The canvas element.  Set height and width in HTML, and give it an ID -->
+            <canvas id="canvas" width="500" height="500"></canvas>
+    <!-- The script element.  This is where the JavaScript code will go -->
+    <script>
+        // Get the canvas element
+        let canvas = document.getElementById("canvas")
+        // Get the context of the canvas
+        let context = canvas.getContext("2d")
+
+        // Call beginPath to start the circle
+        // arc defines the circle part of the circle
+        context.arc(100, 200, 50, 0, 2 * Math.PI)
+        // Use stroke to actually draw
+        context.stroke()
+        // Call beginPath to start the circle
+        context.beginPath()
+        // arc defines the circle part of the circle
+        context.arc(200, 300, 50, 0, Math.PI) // Half a circle
+        // Use fill to actually draw
+        context.fill()
+        // Call beginPath to start the circle
+        context.beginPath()
+        // arc defines the circle part of the circle
+        context.arc(300, 200, 50, 0, 2 * Math.PI)
+        // Use fill to actually draw
+        context.stroke()
+    // End script
+    </script>
+    <!-- End Body -->
+    </body>
+<!-- End HTML Document -->
+</html>

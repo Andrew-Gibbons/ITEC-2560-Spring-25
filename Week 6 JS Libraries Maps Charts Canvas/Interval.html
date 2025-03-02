@@ -1,0 +1,73 @@
+<!-- Create HTML document-->
+<!DOCTYPE html>
+<!-- Start HTML document in English-->
+<html lang="en">
+<!-- Head of the HTML document-->
+<head>
+    <!-- Meta tag for the character set-->
+    <meta charset="UTF-8">
+    <!-- Title of Images-->
+    <title>Interval</title>
+    <!-- Style tag for the CSS-->
+    <style>
+    /* Style for the canvas */
+    #canvas {
+        /* Set the border to 1px black solid */
+      border: 1px black solid;
+    }
+    /* Close the style tag */
+  </style>
+<!-- Close head -->
+</head>
+<!-- Body of the HTML document-->
+<body>
+<!-- Create h2 element with setInterval method used to update canvas as text-->
+<h2>setInterval method used to update canvas</h2>
+
+<!--The canvas element. Set height and width, and give it an id of canvas -->
+<canvas id="canvas" height="200" width="300"></canvas>
+<!-- Script tag for the JavaScript -->
+<script>
+
+    //Find the canvas element in this document
+    let canvas = document.getElementById("canvas")
+    // A context object will be used to draw on the canvas
+    let context = canvas.getContext("2d")
+    // Set the fill style to purple
+    context.fillStyle = 'purple'
+    // Set variable squareShowing to false so that the square is not showing
+    let squareShowing = false
+
+    // setInterval - do a task repeatedly. Specify a task to do, like the function name to call,
+    // and the time between repeats in milliseconds. 1000 milliseconds == 1 seconds.
+    // setInterval( nameOfFunction, timeBetweenCallingFunctionInMs )
+    setInterval(drawSquare, 1000)
+    // Function to draw a square
+    function drawSquare() {
+    // If the square is showing, clear the canvas. If not, draw a square.
+    // if (squareShowing) { ... } else { ... }
+    // This conditional statement checks if the squareShowing variable is true or false.
+    // If squareShowing is true:
+    // context.clearRect(0, 0, 300, 300)
+    // Clears a 300x300 pixel area of the canvas, effectively removing anything drawn in that area.
+    // squareShowing = false
+    // Sets the squareShowing variable to false.
+    // If squareShowing is false:
+    // context.fillRect(100, 50, 100, 100)
+    // Draws a filled 100x100 pixel rectangle (square) at the coordinates (100, 50) on the canvas.
+    // squareShowing = true
+    // Sets the squareShowing variable to true.
+    if (squareShowing) {
+      context.clearRect(0, 0, 300, 300)
+      squareShowing = false
+    } else {
+      context.fillRect(100, 50, 100, 100)
+      squareShowing = true
+    }
+  }
+// Close the script tag
+</script>
+<!-- Close the body tag -->
+</body>
+<!-- Close the HTML document -->
+</html>

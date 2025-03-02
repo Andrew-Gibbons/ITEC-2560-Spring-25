@@ -1,0 +1,7 @@
+/* Add your CSS here */
+/* id college-map has the following properties */
+#college-map {
+    height: 600px;
+    width: 500px;
+    border: 1px green solid
+}

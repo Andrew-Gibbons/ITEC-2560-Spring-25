@@ -1,0 +1,112 @@
+<!-- Create HTML cocument-->
+<!DOCTYPE html>
+<!-- Start HTML-->
+<html>
+<!-- Start head of document -->
+<head>
+
+    <!-- Flickity JS and CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- Start style -->
+    <style>
+        /* Set the background color and the upfront color */
+        body {
+            background: #669973;
+            color: whitesmoke;
+        }
+        /* Class main-carousel has a bottom margin of 50px */
+        .main-carousel {
+            margin-bottom: 50px;
+        }
+        /* Class carousel-cell's properties */
+        .carousel-cell {
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            font-size: 40px;
+            position: absolute;
+            transform: translateY(-20%);
+            top: 50%;
+        }
+        /* Heading 1 aligned center */
+        h1 {
+            text-align: center;
+        }
+        /* Paragraph aligned center and with 30px */
+        p {
+            text-align: center;
+            font-size: 30px;
+        }
+    /* Close style */
+    </style>
+<!-- Close head of document -->
+</head>
+<!-- Start body of document -->
+<body>
+<!-- Heading 1 text of Select your Android Version -->
+<h1>Select your Android Version</h1>
+
+<!-- Create div with class main-carousel -->
+<div class="main-carousel">
+    <!-- Create div with class carousel-cell and text of Android versions -->
+    <div class="carousel-cell">
+        KitKat
+    </div>
+    <div class="carousel-cell">
+        Lollipop
+    </div>
+    <div class="carousel-cell">
+        Marshmallow
+    </div>
+    <div class="carousel-cell">
+        Nougat
+    </div>
+    <div class="carousel-cell">
+        Oreo
+    </div>
+    <div class="carousel-cell">
+        Pie
+    </div>      
+</div>
+<!-- Paragraph with id selected -->
+<p id="selected">
+    <!-- Will display the selected Android version -->
+</p>
+<!-- Script to create the carousel and display the selected Android version -->
+<script>
+    // Create a new Flickity carousel
+    // let flickity = new Flickity( '.main-carousel', { wrapAround: true }):
+    // This line creates a new Flickity carousel instance and assigns it to the variable flickity.
+    // .main-carousel': This is a CSS selector that targets the HTML element with the class main-carousel.
+    // { wrapAround: true }:
+    // This is an options object passed to the Flickity constructor.
+    // The wrapAround option set to true means that the carousel will 
+    // create a continuous loop, allowing users to infinitely scroll through the carousel items.
+    let flickity = new Flickity( '.main-carousel', {
+        // Options go here - see Flickity documentation
+        wrapAround: true,
+    })
+
+    // Event listener for user clicking on one of the carousel cells
+    // event: The event object.
+    // pointer: The pointer event.
+    // cellElement: The clicked carousel cell element.
+    // cellIndex: The index of the clicked carousel cell.
+    // let androidVersion = cellElement.innerHTML:
+    // This line extracts the inner HTML content of the clicked carousel cell, which presumably contains the Android version.
+    // let selectedVersion = document.querySelector('#selected'):
+    // This line selects an HTML element with the ID selected from the document.
+    // selectedVersion.innerHTML = \You have selected ${androidVersion}``:
+    // This line updates the inner HTML content of the selected element with a message indicating the selected Android version.
+    flickity.on('staticClick', function(event, pointer, cellElement, cellIndex ) {
+        let androidVersion = cellElement.innerHTML
+        let selectedVersion = document.querySelector('#selected')
+        selectedVersion.innerHTML = `You have selected ${androidVersion}`
+    })
+// Close script
+</script>
+<!-- Close body of document -->
+</body>
+<!-- Close HTML document -->
+</html>
