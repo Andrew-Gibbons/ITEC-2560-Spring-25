@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capital City Guessing Game</title>
+    <meta charset="utf-8">
+    <!-- Add the viewport meta tag to ensure the page is responsive -->
+     <!-- Add the Bootstrap CSS link to the head of the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
+        crossorigin="anonymous">
+    <!-- Add the countries.js script to the head of the document -->
+    <!-- Add the gametest.js script to the head of the document -->
+    <script src="countries.js"></script>
+    <script async defer src="game.js"></script>
+</head>
+<body>
+<!-- Add a div with the class content, m-4, and center-block to center the content on the page -->
+ <!-- Add an h1 element with the text "Geography Quiz" -->
+  <!-- Add a paragraph element with the text "Test your knowledge of geography. What's the capital city of this country?" -->
+   <!-- Add an h3 element with the id "random-country-display" and the text "Country name placeholder" -->
+     <!-- Add an input group div with the class mb-3 to create space below the input group -->
+      <!-- The user will enter their answer in this input -->
+       <!-- Add an input group append div to contain the button -->
+        <!-- Clicking this button submits the user's answer for the program to verify -->
+         <!-- After the user's guess is verified, display if the user is correct, or not (plus the correct answer) here -->
+
+<div class="content m-4 center-block">
+    <h1>Geography Quiz</h1>
+    <p>Test your knowledge of geography. What's the capital city of this country?</p>
+    <h3 id="random-country-display">Country name placeholder</h3>
+    <div class="input-group mb-3">
+        <input type="text" id="user-answer-entry" class="form-control" placeholder="answer" aria-label="answer" aria-description="submit-answer">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="submit-user-answer">Check Answer</button>
+        </div>
+    </div>
+    <h3 id="game-result">Replace with result</h3>
+</div>
+</body>
+</html>
