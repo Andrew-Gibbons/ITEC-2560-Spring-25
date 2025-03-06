@@ -87,6 +87,7 @@
         let treeType = treeTypeSelect.value
         let city = cityInput.value
         let zipCode = zipInput.value
+        
 
 
         // TODO get the value from the input#city *
@@ -143,7 +144,7 @@
         } else {
             zipInput.classList.remove('error')
         }
-        if (isMinnesotaZip(zipCode) == false) {
+        if (zipCode < 55001 || zipCode > 56763) {
             errors.push('Zip Code must be in the range 55001 to 56763')
             zipInput.classList.add('error')
         } else {
@@ -154,7 +155,7 @@
         // display an alert with all of the error messages. (Hint: use join)
         // and then return from this function to prevent further processing
         if (errors.length > 0) {
-            alert(errors.join(' , '))
+            alert(errors.join('\n'))
             return
         }
 
