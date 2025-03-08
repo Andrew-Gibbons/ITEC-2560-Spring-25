@@ -22,18 +22,18 @@
         
     // Initialize the map and set its view to the geographical center of the USA with a zoom level
     // This JavaScript code snippet initializes a map using the Leaflet library.
-    // var map = L.map('map') creates a map instance and attaches it to the HTML element with the ID map.
+    // let map = L.map('map') creates a map instance and attaches it to the HTML element with the ID map.
     // .setView([39.8283, -98.5795], 4) sets the initial geographical center of the map and the zoom level
     // In this case, the map is centered on the coordinates 39.8283 (latitude) and -98.5795 (longitude), 
     // which is roughly the geographic center of the contiguous United States. 
     // The zoom level is set to 4.
-    var map = L.map('map').setView([39.8283, -98.5795], 4);
+    let map = L.map('map').setView([39.8283, -98.5795], 4);
 
     // This JavaScript code snippet is creating a custom icon for a Leaflet map.
     // var downloadBridge = L.icon({ ... }) creates a new icon object using Leaflet's L.icon function and assigns it to the variable downloadBridge.
     // iconUrl: 'download_bridge.png' specifies the URL of the image file to be used as the icon.
     // You can add more properties to this L.icon object to customize the icon further, such as iconSize, iconAnchor, and popupAnchor.
-    var downloadBridge = L.icon({
+    let downloadBridge = L.icon({
         iconUrl: 'download_bridge.png',
         iconSize:     [38, 95], // size of the icon
         iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
@@ -63,7 +63,7 @@
     }).addTo(map);
 
 // Data for the bridges
-var bridges = [
+let bridges = [
     {
         name: "Verrazzano-Narrows Bridge",
         city: "New York, NY",
@@ -99,12 +99,10 @@ var bridges = [
 // Add markers for each bridge
 // bridges.forEach(function(bridge) { ... })
 //This loops through each bridge object in the bridges array.
-// L.marker(bridge.location)
-// For each bridge, this creates a new marker at the bridge.location, which is an array containing the latitude and longitude.
-// .addTo(map)
-// Adds the marker to the map.
+// L.marker(bridge.location) For each bridge, this creates a new marker at the bridge.location, which is an array containing the latitude and longitude.
+// .addTo(map) Adds the marker to the map.
 // .bindPopup('<b>' + bridge.name + '</b><br>Span: ' + bridge.span + ' meters')
-//Binds a popup to the marker with the bridge.name displayed in bold, and the bridge.span (span of the bridge in meters) below it.
+// Binds a popup to the marker with the bridge.name displayed in bold, and the bridge.span (span of the bridge in meters) below it.
 bridges.forEach(function(bridge) {
     L.marker(bridge.location)
         .addTo(map)
