@@ -1,0 +1,59 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+    <!-- Create head -->
+        <!-- Title -->
+         <!-- Script Vue 3 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue Loops</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!--Create Body -->
+<!-- Create div with id app -->
+<!-- Create h1 with text Task List -->
+<!-- Create ul -->
+<!-- Create li with v-for task in taskList and text {{ task }} -->
+<body>
+    <div id="app"> 
+        <h1>Task List</h1>
+        <ul>
+            <!-- This v-for will create multiple li elements, once for each task in the taskList array -->
+            <li v-for="task in taskList">{{ task }}</li>
+        </ul>      
+    </div>
+
+    <!-- Create script -->
+    <!-- Create const with createApp, ref -->
+    <!-- Create createApp -->
+     <!-- This function initializes a new Vue application instance. The object you provide inside createApp -->
+      <!-- represents the root component of your app. In this case, the object contains the setup() function, which -->
+      <!-- is part of Vue's Composition API. -->
+    <!-- Create setup -->
+     <!-- The setup() function is where you define the logic and state for your component or app. It is called when -->
+      <!-- the component is being initialized. Within this function, you can: -->
+        <!-- Create reactive state using tools like ref or reactive. -->
+        <!-- Set up computed properties and watchers. -->
+        <!-- Write logic, handle props, and interact with the app's lifecycle. -->
+    <!-- Create const with taskList -->
+    <!-- Return taskList -->
+    <!-- Create mount with #app -->
+    <script>
+
+        const { createApp, ref } = Vue 
+
+        createApp({
+            setup() {
+
+                const taskList = ref(['Water plants', 'Pay cell phone bill', 'Feed cat'])   
+
+                return {
+                    taskList,
+                }  
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

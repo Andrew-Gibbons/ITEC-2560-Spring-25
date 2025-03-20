@@ -1,0 +1,71 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+    <!-- Create head -->
+        <!-- Title -->
+         <!-- Script Vue 3 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!-- Create a div with id app -->
+    <!-- Create an h1 tag with the text Hello Vue -->
+    <!-- Create a label tag with the text Please enter your name: -->
+    <!-- Create an input tag with v-model="name" and id="name" -->
+    <!-- Create a div tag with v-if="name" -->
+        <!-- Create a p tag with the text Your name is {{ name }} -->
+        <!-- Create a button tag with the text Clear Input and a v-on:click event that calls the clearName method -->
+    <!-- Create a div tag with v-else -->
+        <!-- Create a p tag with the text Awaiting user input. -->
+<body>
+    <div id="app">
+        <h1>Hello Vue</h1>
+        <label for="name">Please enter your name: </label>
+        <input v-model="name" id="name">
+
+        <div v-if="name">
+            <p>Your name is {{ name }}</p>
+            <button v-on:click="clearName">Clear Input</button>
+        </div>
+        <div v-else>
+            <p>Awaiting user input.</p> 
+        </div>
+    </div>
+    <!-- Create a script tag -->
+    <!-- Create a Vue app -->
+    <!-- Create a setup method -->
+    <!-- Create a ref called name with the value '' -->
+    <!-- Create a function called clearName that sets name to an empty string -->
+    <!-- Return the name and clearName -->
+    <!-- Mount the app to the div with id app -->
+    <script>
+
+        const { createApp, ref } = Vue 
+
+        createApp({
+            setup() {
+
+                const name = ref('')  // Empty string 
+
+                function clearName() {
+                    name.value = ''
+                }
+
+                // Equivalent to above function definition 
+
+                // const clearName = () => {
+                //     name.value = ''
+                // }
+
+                return {
+                    name,
+                    clearName
+                }  
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

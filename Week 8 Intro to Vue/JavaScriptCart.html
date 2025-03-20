@@ -1,0 +1,98 @@
+<!-- Create HTML Document -->
+<!-- Start HTML -->
+ <!-- Start Head -->
+    <!-- Set title to Plain JavaScript Cart -->
+    <!-- Add style tag -->
+ <!DOCTYPE html>
+<html>
+
+<head>
+<title>Plain JavaScript Cart</title>
+<style>
+    td, th {
+        width: 25%;
+        text-align: center
+    }
+</style>
+
+</head>
+
+<!-- Start Body -->
+ <!-- Create div -->
+    <!-- Add h1 tag with text Example Shopping Cart -->
+    <!-- Create table -->
+        <!-- Create tr -->
+            <!-- Create th with text Item -->
+            <!-- Create th with text Unit Price -->
+            <!-- Create th with text Quantity -->
+            <!-- Create th with text Total -->
+        <!-- Close tr -->
+        <!-- Create tr -->
+            <!-- Create td with id name -->
+            <!-- Create td with id unit-price -->
+            <!-- Create td -->
+                <!-- Create input with type number and id quantity -->
+            <!-- Close td -->
+            <!-- Create td with id total -->
+        <!-- Close tr -->
+    <!-- Close table -->
+<body>
+    <div>
+        <h1>Example Shopping Cart</h1>
+        <table>
+            <tr><th>Item</th><th>Unit Price</th><th>Quantity</th><th>Total</th></tr>
+            <tr>
+                <td id="name"></td> 
+                <td id="unit-price"></td>
+                <td><input type="number" id="quantity"></td>
+                <td id="total"></td>
+            </tr>
+        </table>
+    </div>
+
+<!-- Add script tag -->
+    <!-- Create data object with name, unitPrice, and quantity -->
+    <!-- Create nameEl variable with querySelector to select element with id name -->
+    <!-- Create unitPriceEl variable with querySelector to select element with id unit-price -->
+    <!-- Create quantityInput variable with querySelector to select element with id quantity -->
+    <!-- Create totalEl variable with querySelector to select element with id total -->
+    <!-- Set nameEl innerHTML to data name -->
+    <!-- Set unitPriceEl innerHTML to data unitPrice -->
+    <!-- Set quantityInput value to data quantity -->
+    <!-- Create updateTotal function -->
+        <!-- Create total variable with quantityInput value multiplied by unitPriceEl innerHTML -->
+        <!-- Set totalEl innerHTML to total with 2 decimal places -->
+    <!-- Add event listener to quantityInput for input event -->
+    <!-- Adds an event listener to the quantityInput element (a DOM element, presumably an input field). -->
+    <!-- The event listener listens for the input event, which is triggered when the user types into the input field. -->
+    <!-- When the input event is triggered, the updateTotal function is called. -->
+    <!-- Call updateTotal function -->
+    <!-- Close script -->
+<script>
+
+    let data = { name: 'Hat', unitPrice: 4.99, quantity: 1}
+
+    let nameEl = document.querySelector('#name')
+    let unitPriceEl = document.querySelector('#unit-price')
+    let quantityInput = document.querySelector('#quantity')
+    let totalEl = document.querySelector('#total')
+    
+    nameEl.innerHTML = data.name 
+    unitPriceEl.innerHTML = data.unitPrice
+    quantityInput.value = data.quantity
+
+    function updateTotal() {
+        let total = quantityInput.value * unitPriceEl.innerHTML
+        totalEl.innerHTML = total.toFixed(2)   // display 2 decimal places
+    }
+
+    quantityInput.addEventListener('input', function() {
+        updateTotal()
+    })
+
+    updateTotal()
+
+</script>
+
+</body>
+</html>

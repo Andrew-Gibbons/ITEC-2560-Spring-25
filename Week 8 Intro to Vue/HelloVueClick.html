@@ -1,0 +1,62 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+  <!-- Create head -->
+    <!-- Have the title be Hello Vue -->
+     <!-- Add a src to the vue page -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!-- Start Body -->
+ <!-- Add a div with an id of app -->
+    <!-- Add an h1 tag with the text Hello Vue -->
+    <!-- Add a p tag with the text {{ message }} -->
+    
+<body>
+
+    <div id="app">
+        <h1>Hello Vue</h1>
+        <p>
+            {{ message }}
+        </p>
+
+        <!-- This code adds an interactive button in Vue.js.. Here's what each part does: -->
+        <!-- 1. The button element is added with the text "Add !". -->
+        <!-- 2. The v-on:click directive is used to listen for a click event on the button element. -->
+        <!-- 3. The addExclamation method is called when the button is clicked, adding an exclamation mark to the message. -->
+        <button v-on:click="addExclamation">Add !</button>
+    </div>
+    <!-- Add a script tag -->
+    <script>
+
+        // Create a const called { createApp, ref } and set it to Vue
+        // Create a const called message and set it to ref('hi')
+        // Create a function called addExclamation
+        // Return message and addExclamation
+        // Mount the app to the div with the id of app
+        const { createApp, ref } = Vue 
+
+        createApp({
+            setup() {
+                const message = ref('hi')
+
+                function addExclamation() {
+                    message.value = message.value + '!'
+                }
+
+                return {
+                    // refs - reactive data
+                    message, 
+
+                    // function definitions 
+                    addExclamation
+                }
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

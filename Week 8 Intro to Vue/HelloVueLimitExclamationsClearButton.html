@@ -1,0 +1,77 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+    <!-- Create head -->
+        <!-- Title -->
+         <!-- Script Vue 3 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+<!-- Create a div with id app -->
+<!-- Create an h1 tag with the text Hello Vue -->
+<!-- Create a p tag with the text {{ message }} -->
+<!-- Create a button tag with the text Add ! and a v-on:click event that calls the addExclamation method -->
+<!-- Create a button tag with the text Clear Exclamation Points and a v-on:click event that calls the clearExclamations method -->
+<div id="app">
+
+    <h1>Hello Vue</h1>
+
+    <p>{{ message }}</p>
+
+    <button v-on:click="addExclamation">Add !</button>
+
+    <button v-on:click="clearExclamations">Clear Exclamation Points</button>
+
+</div>
+<!-- Create a script tag -->
+<!-- Create a Vue app -->
+<!-- Create a setup method -->
+<!-- Create a ref called message with the value 'hi' -->
+<!-- Create a ref called numberOfExclamationPoints with the value 0 -->
+<!-- Create a function called addExclamation that adds an exclamation point to the message and increments numberOfExclamationPoints -->
+<!-- Create a function called clearExclamations that resets the message to 'hi' and numberOfExclamationPoints to 0 -->
+<!-- Return the message, numberOfExclamationPoints, addExclamation, and clearExclamations -->
+<!-- Mount the app to the div with id app -->
+<script>
+
+    const { createApp, ref } = Vue 
+
+    createApp({
+        setup() {
+            const message = ref('hi')
+            const numberOfExclamationPoints = ref(0)
+
+            function addExclamation() {
+                if (numberOfExclamationPoints.value < 10) {
+                    message.value = message.value + '!'
+                    numberOfExclamationPoints.value++ 
+                } else {
+                    alert('No more exclamation points!')
+                }
+            }
+
+            function clearExclamations() {
+                numberOfExclamationPoints.value = 0
+                message.value = 'hi'
+            }
+
+            return {
+                // refs - reactive data
+                message, 
+                numberOfExclamationPoints,
+
+                // function definitions 
+                addExclamation,
+                clearExclamations
+            }
+        }
+    }).mount('#app')
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+    <!-- Create head -->
+        <!-- Title -->
+         <!-- Script Vue 3 -->
+<!DOCTYPE html>
+<html>
+
+<!-- Create Head -->
+    <!-- Create a title of Cart -->
+        <!-- Script Vue 3 -->
+        <!-- Add Style -->
+<head>
+<title>Cart</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+   
+    <style>
+        td, th {
+            width: 25%;
+            text-align: center
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<!-- Create body -->
+    <!-- Create div with id app -->
+        <!-- Create h1 with text Example Shopping Cart -->
+        <!-- Create table -->
+        <!-- Create tr -->
+        <!-- Create th with text Item -->
+        <!-- Create th with text Unit Price -->
+        <!-- Create th with text Quantity -->
+        <!-- Create th with text Total -->
+        <!-- Create tr -->
+        <!-- Create td with text {{ name }} -->
+        <!-- Create td with text ${{ unitPrice }} -->
+        <!-- Create td -->
+        <!-- Create input with type number and v-model.number quantity -->
+        <!-- Create td with text ${{ total }} -->
+<body>
+    <div id="app">
+        <h1>Example Shopping Cart</h1>
+
+        <table>
+
+            <tr>
+                <th>Item</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th></tr>
+            <tr>
+                <td>{{ name }}</td> 
+                <td>${{ unitPrice }}</td>
+                <td>
+                    <!-- The number modifier will convert the text entered to a number, if a conversion is possible -->
+                    <input type="number" id="quantity" v-model.number="quantity">
+                    <div class="error-message" v-if="quantityError">{{ quantityError }}</div>
+                </td>
+                <td> 
+                    <div v-if="quantityError">
+                        Invalid quantity
+                    </div>
+                    <div v-else>
+                        ${{ total }} 
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- Create script -->
+     <!-- Create const with createApp, ref, computed -->
+     <!-- Create createApp -->
+      <!-- This function initializes a new Vue application instance. The object you provide inside createApp -->
+       <!-- represents the root component of your app. In this case, the object contains the setup() function, which -->
+       <!-- is part of Vue's Composition API. -->
+    <!-- Create setup -->
+        <!-- The setup() function is where you define the logic and state for your component or app. It is called when -->
+        <!-- the component is being initialized. Within this function, you can: -->
+            <!-- Create reactive state using tools like ref or reactive. -->
+            <!-- Set up computed properties and watchers. -->
+            <!-- Write logic, handle props, and interact with the app's lifecycle. -->
+    <!-- Create const with name, quantity, unitPrice -->
+    <!-- Create const with maxQuantity -->
+    <!-- Create const with quantityError -->
+     <!-- if (!Number.isInteger(quantity.value)): -->
+      <!-- This checks whether quantity.value is not an integer. -->
+<!-- If the condition is true (i.e., quantity.value is not an integer), the function immediately returns -->
+ <!-- the string 'Quantity must be a number'.-->
+  <!-- else if (quantity.value < 0 || quantity.value > maxQuantity): -->
+    <!-- This checks whether quantity.value is less than 0 (invalid) or greater than maxQuantity (the maximum allowed value). -->
+    <!-- If either condition is true, the function returns the string: Quantity must be between 0 and ${maxQuantity}. The value -->
+     <!-- of maxQuantity will be dynamically inserted into the string (e.g., Quantity must be between 0 and 10).-->
+      <!-- const total = computed(...): -->
+        <!-- The computed function creates a reactive property that automatically recalculates its value whenever the variables -->
+         <!-- it depends on change. -->
+            <!-- In this case, the computed property total depends on two reactive variables: quantity.value and unitPrice.value. -->
+            <!-- The function inside computed calculates the total price by multiplying the quantity and unit price, then formats -->
+             <!-- the result to two decimal places. -->
+            <!-- The formatted total price is returned as the result of the computed property. -->
+    <!-- Return name, quantity, unitPrice, total, quantityError -->
+    <!-- Create mount with #app -->
+<script>
+
+
+const { createApp, ref, computed } = Vue 
+
+createApp({
+    setup() {
+
+        const name = ref('Hat')  
+        const quantity = ref(1)
+        const unitPrice = ref(4.99) 
+
+        const maxQuantity = 10
+
+        const quantityError = computed( () => {
+
+            if (!Number.isInteger(quantity.value)) { 
+                    return 'Quantity must be a number'
+                }
+                
+                else if (quantity.value < 0 || quantity.value > maxQuantity) {
+                    return `Quantity must be between 0 and ${maxQuantity}`
+                }
+
+                 // Clear error if quantity is valid                     
+                 
+                else {
+                    return ''  // Could also return undefined or null       
+                }
+
+        })
+
+        const total = computed( () => {
+            const totalPrice = quantity.value * unitPrice.value
+            const formattedPrice = totalPrice.toFixed(2)
+            return formattedPrice
+        })
+
+        return {
+
+            // Reactive properties 
+            name,
+            quantity,
+            unitPrice,
+
+            // Computed properties 
+            total,
+            quantityError
+        }  
+    }
+}).mount('#app')
+
+
+
+
+</script>
+
+</body>
+
+</html>

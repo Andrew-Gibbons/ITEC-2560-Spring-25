@@ -1,0 +1,71 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+  <!-- Start Head -->
+    <!-- Title -->
+    <!-- Script Vue 3 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!-- Start Body -->
+<!-- Create a div with id app -->
+<!-- Create an h1 tag with the text Hello Vue -->
+<!-- Create a p tag with the text {{ uppercaseMessage }} -->
+<!-- Create a button tag with the text Add ! and a v-on:click event that calls the addExclamation method -->
+
+<body>
+    <div id="app">
+        <h1>Hello Vue</h1>
+        <p>
+            {{ uppercaseMessage }}
+        </p>
+
+        <button v-on:click="addExclamation">Add !</button>
+    </div>
+    <!-- Create a script tag -->
+    <!-- Create a Vue app -->
+    <!-- Create a setup method -->
+    <!-- Create a ref called message with the value 'hi' -->
+    <!-- Create a function called addExclamation that adds an exclamation point to the message -->
+    <!-- Create a computed property called uppercaseMessage that returns the message in uppercase -->
+    <!-- Return the message, addExclamation, and uppercaseMessage -->
+    <!-- Mount the app to the div with id app -->
+    <script>
+
+    const { createApp, ref, computed } = Vue 
+
+        createApp({
+            setup() {
+                const message = ref('hi')
+
+                function addExclamation() {
+                    message.value = message.value + '!'
+                }
+            
+                // const uppercaseMessage = computed( function() {
+                //     return message.value.toUpperCase()
+                // })
+                
+                const uppercaseMessage = computed( () => {   // Arrow notation - equivalent to above
+                    return message.value.toUpperCase()
+                })
+
+                return {
+                    // refs - reactive data
+                    message, 
+
+                    // function definitions 
+                    addExclamation,
+
+                    // computed properties 
+                    uppercaseMessage
+                }
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

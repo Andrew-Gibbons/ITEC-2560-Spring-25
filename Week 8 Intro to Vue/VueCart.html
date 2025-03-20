@@ -1,0 +1,113 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+    <!-- Create head -->
+        <!-- Title -->
+         <!-- Script Vue 3 -->
+<!DOCTYPE html>
+<html>
+
+<!-- Create Head -->
+ <!-- Create a title of Cart -->
+    <!-- Script Vue 3 -->
+     <!-- Add Style -->
+<head>
+<title>Cart</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+   
+    <style>
+        td, th {
+            width: 25%;
+            text-align: center
+        }
+    </style>
+
+</head>
+
+<!--Create Body -->
+    <!-- Create div with id app -->
+        <!-- Create h1 with text Example Shopping Cart -->
+        <!-- Create table -->
+        <!-- Create tr -->
+        <!-- Create th with text Item -->
+        <!-- Create th with text Unit Price -->
+        <!-- Create th with text Quantity -->
+        <!-- Create th with text Total -->
+        <!-- Create tr -->
+        <!-- Create td with text {{ name }} -->
+        <!-- Create td with text ${{ unitPrice }} -->
+        <!-- Create td -->
+        <!-- Create input with type number and v-model quantity -->
+        <!-- Create td with text ${{ total }} -->
+<body>
+    <div id="app">
+        <h1>Example Shopping Cart</h1>
+
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th></tr>
+            <tr>
+                <td>{{ name }}</td> 
+                <td>${{ unitPrice }}</td>
+                <td>
+                    <input type="number" v-model="quantity">
+                </td>
+                <td> ${{ total }} </td>
+            </tr>
+        </table>
+    </div>
+
+<script>
+
+    const { createApp, ref, computed } = Vue 
+    // createApp is a function that initializes a new Vue application instance
+    // ref is a function that creates a reactive reference
+    // Creates a reactive variable named name with an initial value of 'Hat'.
+    // If you update the value of name, Vue will automatically track changes and update any part of the template that uses it.
+    // computed is a function that creates a computed property
+    // Computed properties are derived from other reactive properties. They are updated automatically when the reactive properties
+    // they depend on change.
+    // The computed function is used to define a value that is derived from other reactive variables, such as quantity and unitPrice.
+    // The result, total, becomes a reactive computed property. This means that if either quantity or unitPrice changes, total
+    // will automatically recalculate.
+    // The function inside computed performs the calculation:
+    // quantity.value * unitPrice.value computes the total price based on the current values of the quantity and unitPrice
+    // reactive variables.
+    // .toFixed(2) formats the result to two decimal places, turning the total price into a nicely formatted string (e.g., "12.34").
+    // This formatted price is returned as the result of the computed property.
+    // The return statement defines the properties that will be available in the template.
+    // In this case, it includes name, quantity, unitPrice, and total.
+    // Create mount with #app
+
+    createApp({
+        setup() {
+
+            const name = ref('Hat')  
+            const quantity = ref(1)
+            const unitPrice = ref(4.99) 
+
+            const total = computed( () => {
+                const totalPrice = quantity.value * unitPrice.value
+                const formattedPrice = totalPrice.toFixed(2)
+                return formattedPrice
+            })
+
+            return {
+                name,
+                quantity,
+                unitPrice,
+
+                total
+            }  
+        }
+    }).mount('#app')
+
+
+</script>
+
+</body>
+
+</html>

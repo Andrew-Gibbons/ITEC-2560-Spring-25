@@ -1,0 +1,67 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+    <!-- Start Head -->
+        <!-- Title -->
+        <!-- Script Vue 3 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!-- Start Body -->
+<body>
+    <!-- Create a div with id app -->
+    <!-- Create an h1 tag with the text Hello Vue -->
+    <!-- Create a p tag with the text {{ message }} -->
+    <div id="app">
+
+        <h1>Hello Vue</h1>
+
+        <p>{{ message }}</p>
+        <!-- Create a button tag with the text Add ! and a v-on:click event that calls the addExclamation method -->
+        <button v-on:click="addExclamation">Add !</button>
+
+    </div>
+    <!-- Create a script tag -->
+    <script>
+        // Create a const called { createApp, ref } and set it to Vue
+        // Create a const called message and set it to ref('hi')
+        // Create a const called numberOfExclamationPoints and set it to ref(0)
+        // Create a function called addExclamation
+        // If numberOfExclamationPoints is less than 10, add an exclamation point to the message and 
+        // increment numberOfExclamationPoints
+        // Otherwise, show an alert saying "No more exclamation points!"
+        // Return message, numberOfExclamationPoints, and addExclamation
+        // Mount the app to the div with the id of app
+        const { createApp, ref } = Vue 
+
+        createApp({
+            setup() {
+                const message = ref('hi')
+                const numberOfExclamationPoints = ref(0)
+
+                function addExclamation() {
+                    if (numberOfExclamationPoints.value < 10) {
+                        message.value = message.value + '!'
+                        numberOfExclamationPoints.value++ 
+                    } else {
+                        alert('No more exclamation points!')
+                    }
+                }
+
+                return {
+                    // refs - reactive data
+                    message, 
+                    numberOfExclamationPoints,
+
+                    // function definitions 
+                    addExclamation,
+                }
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

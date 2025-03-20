@@ -1,0 +1,60 @@
+<!-- Create HTML document -->
+<!-- Start HTML -->
+ <!-- Start Head -->
+    <!-- Set title to Hello Vue -->
+    <!-- Add Vue 3 script -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!-- Start Body -->
+<!-- Create div with id app -->
+<!-- Add h1 tag with Hello Vue -->
+<!-- Add label tag with for name and text Please enter your name: -->
+<!-- Add input tag with v-model name and id name -->
+<!-- Add div tag with v-if name -->
+<!-- This is Vue's directive for conditional rendering. The div and its child elements will only be rendered -->
+ <!-- (displayed in the DOM) if the name variable evaluates to a truthy value (e.g., not null, undefined, an empty string, etc.). -->
+<!-- Add p tag with text Your name is and {{ name }} -->
+<!-- Close div -->
+<body>
+    <div id="app">
+        <h1>Hello Vue</h1>
+        <label for="name">Please enter your name: </label>
+        <input v-model="name" id="name">
+
+        <div v-if="name">
+            <p>Your name is {{ name }}</p>
+        </div>
+      
+    </div>
+    <!-- Add script tag -->
+    <!-- Create Vue app -->
+    <!-- Create setup function -->
+    <!-- Create name variable with ref -->
+    <!-- Return name -->
+    <!-- Close setup -->
+    <!-- Close createApp -->
+    <!-- Mount app to div with id app -->
+    <!-- Close script -->
+    <script>
+
+        const { createApp, ref } = Vue 
+
+        createApp({
+            setup() {
+
+                const name = ref('')  // Empty string 
+
+                return {
+                    name   
+                }  
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

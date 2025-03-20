@@ -1,0 +1,91 @@
+<!-- Create HTML document -->
+<!-- Start HTML -->
+ <!-- Start Head -->
+    <!-- Set title to Vue Task List -->
+    <!-- Add Vue 3 script -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue Task List</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!-- Start Body -->
+ <!-- Create div with id app -->
+    <!-- Add h1 tag with Vue Loops -->
+        <!-- Add label tag with for task and text Please enter your to-do task: -->
+        <!-- Add input tag with v-model newTask and id task -->
+        <!-- Add button tag with v-on:click addTask and text Add Task -->
+        <!-- Add h2 tag with text Your task list -->
+        <!-- Add ul tag -->
+            <!-- Add li tag with v-for task in taskList and text {{ task }} -->
+        <!-- Close ul -->
+        <!-- Add button tag with v-on:click clearList and text All done! -->
+<body>
+    <div id="app">
+        <h1>Vue Loops</h1>
+        <label for="task">Please enter your to-do task: </label>
+        <input v-model="newTask" id="task">
+        <button v-on:click="addTask">Add Task</button>
+
+        <h2>Your task list</h2>
+        <ul>
+            <li v-for="task in taskList">
+                {{ task }}
+            </li>
+        </ul>   
+
+        <button v-on:click="clearList">All done!</button>
+    </div>
+    <!-- Add script tag -->
+    <!-- Create Vue app -->
+    <!-- Create setup function -->
+    <!-- Create taskList variable with ref -->
+    <!-- Create newTask variable with ref -->
+    <!-- Create addTask function -->
+        <!-- If newTask is not empty -->
+            <!-- Add newTask to taskList -->
+            <!-- Clear newTask -->
+    <!-- Create clearList function -->
+        <!-- Clear taskList -->
+    <!-- Return taskList, newTask, addTask, and clearList -->
+    <!-- Close setup -->
+    <!-- Close createApp -->
+    <!-- Mount app to div with id app -->
+    <!-- Close script -->
+    <script>
+
+        const { createApp, ref } = Vue 
+
+        createApp({
+            setup() {
+
+                const taskList = ref([])  // empty array 
+                const newTask = ref('')   // empty string
+
+                const addTask = () => {
+                    if (newTask.value) { // if a task is entered,
+                        taskList.value.push(newTask.value)   // add to the task list
+                        newTask.value = ''  // clear the text in the input
+                    }
+                }
+
+                const clearList = () => {
+                    taskList.value = []
+                }
+
+                return {
+                    // reactive data
+                    taskList,
+                    newTask,
+
+                    // functions 
+                    addTask,
+                    clearList
+                }  
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

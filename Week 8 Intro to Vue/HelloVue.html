@@ -1,0 +1,53 @@
+<!-- Create HTML document -->
+<!DOCTYPE html>
+<!-- Start HTML -->
+<html>
+<!-- Start Head -->
+ <!-- Have the title be Hello Vue -->
+  <!-- Add a src to the vue page -->
+<head>
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!-- Start Body -->
+<body>
+    <!-- Add a div with an id of app -->
+    <!-- Add an h1 tag with the text Hello Vue -->
+    <!-- Add a p tag with the text {{ message }} -->
+    <div id="app">
+        <h1>Hello Vue</h1>
+        <p>
+            {{ message }}
+        </p>
+    </div>
+    <!-- Add a script tag -->
+    <script>
+        // Create a const called { createApp, ref } and set it to Vue
+        // Create a const called message and set it to ref('hi')
+        // Return message
+        // Mount the app to the div with the id of app
+        const { createApp, ref } = Vue
+        
+        // This code snippet is from Vue.js 3 and showcases the creation of a Vue application using the createApp API
+        // along with the Composition API's setup function. Here's what it does:
+        // 1. The createApp function is used to create a new Vue application instance.
+        // 2. The setup function is used to define the component's reactive state and logic.
+        // 3. The ref function is used to create a reactive reference to the message variable with an initial value of 'hi'.
+        // 4. The message variable is returned from the setup function, making it accessible in the template.
+        // 5. The createApp function is called with an object containing the setup function, and the resulting app instance is
+        // mounted to the #app element in the DOM.
+        createApp({
+            setup() {
+
+                const message = ref('hi')
+
+                return {
+                    message  
+                }  
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

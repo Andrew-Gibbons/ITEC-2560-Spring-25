@@ -1,0 +1,92 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+    <!-- Create head -->
+        <!-- Title -->
+         <!-- Script Vue 3 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!-- Start Body -->
+ <!-- Add a div with an id of app -->
+    <!-- Add an h1 tag with the text Hello Vue -->
+    <!-- Add a p tag with the text {{ messageWithExclamationPoints }} -->
+    <!-- Add a button with the text Add ! and a v-on:click event that calls the addExclamation method -->
+    <!-- Add a button with the text Clear Exclamation Points and a v-on:click event that calls the clearExclamations method -->
+<body>
+
+    <div id="app">
+
+    <h1>Hello Vue</h1>
+
+    <p>{{ messageWithExclamationPoints }}</p>
+
+    <button v-on:click="addExclamation">Add !</button>
+
+    <button v-on:click="clearExclamations">Clear Exclamation Points</button>
+
+</div>
+<!-- Add a script tag -->
+ <!-- Create a Vue app -->
+ <!-- Create a setup method -->
+    <!-- Create a ref called originalMessage with the value 'hi' -->
+    <!-- Create a ref called numberOfExclamationPoints with the value 0 -->
+    <!-- Create a function called addExclamation that adds an exclamation point to the message if numberOfExclamationPoints is -->
+    <!-- less than 10and increments numberOfExclamationPoints -->
+    <!-- Create a function called clearExclamations that resets the message to 'hi' and numberOfExclamationPoints to 0 -->
+    <!-- Create a computed property called messageWithExclamationPoints that returns the message with the correct number of exclamation points -->  
+    <!-- Return the originalMessage, numberOfExclamationPoints, messageWithExclamationPoints, addExclamation, and clearExclamations -->
+    <!-- Mount the app to the div with the id of app -->
+<script>
+
+    const { createApp, ref, computed } = Vue 
+
+    createApp({
+        setup() {
+
+            const originalMessage = ref('hi') 
+
+            const numberOfExclamationPoints = ref(0)
+
+            function addExclamation() {
+                if (numberOfExclamationPoints.value < 10) {
+                    numberOfExclamationPoints.value++ 
+                } else {
+                    alert('No more exclamation points!')
+                }
+            }
+
+            function clearExclamations() {
+                numberOfExclamationPoints.value = 0
+            }
+
+            const messageWithExclamationPoints = computed( function() {
+                let computedMessage = originalMessage.value
+
+                for (let x = 0; x < numberOfExclamationPoints.value; x++) {
+                    computedMessage = computedMessage + '!'
+                }
+                return computedMessage
+            })
+
+            return {
+                // refs - reactive data
+                originalMessage,
+                numberOfExclamationPoints,
+
+                // Computed properties
+                messageWithExclamationPoints, 
+
+                // function definitions 
+                addExclamation,
+                clearExclamations,
+            }
+        }
+    }).mount('#app')
+
+</script>
+
+</body>
+</html>

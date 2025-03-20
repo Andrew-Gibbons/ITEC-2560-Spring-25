@@ -1,0 +1,78 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+    <!-- Create head -->
+        <!-- Title -->
+         <!-- Script Vue 3 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue Task List</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<!--Create Body -->
+<!-- Create div with id app -->
+<!-- Create h1 with text Vue Loops -->
+<!-- Create label with text Please enter your to-do task: -->
+<!-- Create input with v-model newTask and id new-task -->
+<!-- Create button with v-on:click addTask and text Add Task -->
+<!-- Create h2 with text Your task list -->
+<!-- Create ul -->
+<!-- Create li with v-for task in taskList and text {{ task }} -->
+<body>
+    <div id="app">
+        <h1>Vue Loops</h1>
+        <label for="new-task">Please enter your to-do task: </label>
+        <input v-model="newTask" id="new-task">
+        <button v-on:click="addTask">Add Task</button>
+
+        <h2>Your task list</h2>
+        <ul>
+            <li v-for="task in taskList">
+                {{ task }}
+            </li>
+        </ul>   
+
+    </div>
+    <!-- Create script -->
+    <!-- Create const with createApp, ref -->
+    <!-- Create createApp -->
+    <!-- Create setup -->
+    <!-- Create const with taskList and newTask -->
+    <!-- Create const with addTask -->
+    <!-- Create if with newTask.value -->
+    <!-- Create taskList.value.push(newTask.value) -->
+    <!-- Create newTask.value = '' -->
+     <!-- Return taskList, newTask, and addTask -->
+    <!-- Create mount with #app -->
+    <script>
+
+        const { createApp, ref } = Vue 
+
+        createApp({
+            setup() {
+
+                const taskList = ref([])  // empty array 
+                const newTask = ref('')   // empty string
+
+                const addTask = () => {
+                    if (newTask.value) { // if a task is entered,
+                        taskList.value.push(newTask.value)   // add to the task list
+                        newTask.value = ''  // clear the text in the input
+                    }
+                }
+
+                return {
+                    // reactive data
+                    taskList,
+                    newTask,
+
+                    // functions 
+                    addTask
+                }  
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>
