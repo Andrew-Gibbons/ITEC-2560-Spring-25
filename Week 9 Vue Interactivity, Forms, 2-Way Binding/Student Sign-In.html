@@ -1,0 +1,312 @@
+<!-- Create HTML document -->
+ <!-- Start HTML -->
+<!DOCTYPE html>
+<html>
+
+<!-- Create Head-->
+ <!-- Create a Title as Student Sign in -->
+  <!-- Use script to call Vue.js -->
+    <!-- Use Bootstrap for styling -->
+    <!-- Use Bootstrap Icons for icons -->
+    <!-- Link to external CSS file for custom styles -->
+<head>
+    <title>Student Sign</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+
+<!-- Create Body -->
+ <!-- Create a div with id app -->
+  <!-- Create a div with id new-student-form-errors -->
+<body>
+    <div id="app">
+        
+        <div id="new-student-form-errors" class="m-2">
+            <!-- TODO show errors from form validation -->
+             <!-- v-if="formErrors.length > 0" -->
+             <!-- This directive checks if there are any errors in the  array. If the array isn't empty (i.e., there are errors), -->
+              <!-- the alert box will be displayed.-->
+               <!-- v-for="error in formErrors -->
+               <!-- This loops through the  array, where each item in the array is an individual error message. -->
+                <!-- v-bind:key="error" -->
+                 <!-- This assigns a unique key to each error message, which is important for Vue's reactivity and performance. -->
+                  <!-- The alert box will display each error message as a list item. -->
+            <!-- This is a good practice to ensure that each error message is displayed correctly and efficiently. -->
+                <div class="alert alert-danger" v-if="formErrors.length > 0">
+                <li v-for="error in formErrors" v-bind:key="error">{{ error }}</li>   
+        </div>
+
+        <!-- id="new-student-form" -->
+        <!-- This div serves as a form for adding a new student. -->
+        <!-- It is styled with Bootstrap classes to look like a card. -->
+         <!-- class="card add-student m-2 p-2" -->
+        <!-- The m-2 class adds a margin of 2 units on all sides, and p-2 adds padding of 2 units. -->
+         <!-- card -->
+        <!-- The card class is a Bootstrap component that provides a flexible and extensible container for displaying content. -->
+         <!-- add-student -->
+          <!-- This is a custom class specific to this form, which could have additional styling or behavior. -->
+           <!-- Create an h4 with class card-title and text Add new student -->
+        <div id="new-student-form" class="card add-student m-2 p-2">
+            <h4 class="card-title">Add new student</h4>
+
+            <!-- Create a div -->
+             <!-- class="form-group mb-3" -->
+            <!-- This class is used to create a form group, which is a container for form controls. -->
+            <!-- The mb-3 class adds a margin-bottom of 3 units to the form group, providing spacing between this group and the next element. -->
+            <!-- Create a label with a for of name and text of Name -->
+             <!-- Create an input with an id of name, a class of form-controlm and v-model.trim=newStudentName -->
+              <!-- v-model.trim="newStudentName" -->
+               <!-- The v-model directive creates a two-way data binding on the input element. -->
+                <!-- This means that any changes to the input field will automatically update the newStudentName variable, and vice versa. -->
+                 <!-- The .trim modifier ensures that any leading or trailing whitespace is removed from the input value. -->
+                <!-- This is useful for ensuring that the input is clean and doesn't contain unnecessary spaces. -->
+            <div class="form-group mb-3">
+                <label for="name">Name</label>
+                <!-- TODO v-model newStudentName -->
+                <input id="name" class="form-control" v-model.trim="newStudentName">
+            </div>
+
+            <!-- Create another div -->
+             <!-- class="form-group mb-3" -->
+            <!-- This is similar to the previous form group, but for the student's Star ID. -->
+            <div class="form-group mb-3">
+                <label for="starID">Star ID</label>
+                 <!-- TODO v-model newStarID -->
+                <input id="starID" class="form-control" v-model.trim="newStarID">
+            </div>
+
+            <!-- TODO v-on:click event handler -->
+            <!-- This is an event handler that will be triggered when the button is clicked. -->
+            <!-- The v-on directive (or its shorthand @) is used to listen for events on the button element. -->
+            <button class="btn btn-primary" @:click="addStudent">Add</button>
+        </div>
+
+        <!-- Create a div with id student-list-table and a class of card m-2 p-2 -->
+        <!-- This div will display the list of students in a table format. -->
+        <!-- The card class is used to style the table as a Bootstrap card, providing a clean and organized look. -->
+         <!-- m-2 p-2 -->
+          <!-- The m-2 class adds a margin of 2 units on all sides, and p-2 adds padding of 2 units. -->
+           <!-- h4 with card-title -->
+            <!-- This will display the title "Student List" above the table. -->
+             <!-- h5 will show the number of students in the class. -->
+              <!-- The studentCount variable is used to dynamically display the number of students. -->
+            <!-- The {{ studentCount }} expression is a Vue interpolation that will be replaced with the actual count of students. -->
+                <!-- The conditional expression {{ studentCount === 1 ? 'student' : 'students' }} -->
+                <!-- This checks if there is only one student. If so, it will display "student" (singular), otherwise it will display "students" (plural). -->
+        <div id="student-list-table" class="card m-2 p-2">
+            <h4 class="card-title">Student List</h4>
+            <h5>There are {{studentCount}} {{ studentCount === 1 ? 'student' : 'students' }} in class</h5>
+
+            <!-- This div will contain the table of students. -->
+            <!-- The table is styled with Bootstrap classes to provide a clean and organized layout. -->
+            <!-- The table will display the students' names, Star IDs, and their presence status. -->
+            <div id="student-table">
+                <table class="table">
+                    <thead>
+                        <tr class="aling-middle">
+                            <th>Name</th>
+                            <th>StarID</th>
+                            <th>Present?</th>
+                        </tr>
+                    </thead>
+
+                    <!-- The tbody element contains the actual data rows of the table. -->
+                    <!-- The v-for directive is used to loop through the sortedStudents array, which contains the list of students. -->
+                     <!-- v-bind:key="student.starID" -->
+                    <!-- This assigns a unique key to each student based on their Star ID. -->
+                    <!-- This is important for Vue's reactivity and performance, as it helps Vue identify which items have changed, been added, or removed. -->
+                     <!-- The :class directive is used to conditionally apply classes based on the student's presence status. -->
+                      <!-- If the student is present, the "present" class will be applied, otherwise the "absent" class will be applied. -->
+                       <!-- This allows for visual differentiation between present and absent students in the table. -->
+                        <!-- Create anput type checkbox -->
+                         <!-- The checkbox allows the user to mark the student as present or absent. -->
+                          <!-- The v-model directive is used to create a two-way data binding between the checkbox and the student's present property. -->
+                           <!-- This means that when the checkbox is checked, the student's present property will be set to true, and when it's unchecked, it will be set to false. -->
+                            <!-- v-model="student.present" -->
+                             <!-- Two-Way Binding: If the user changes the value in the input (e.g., selects or deselects a checkbox), -->
+                              <!-- the  property will automatically update. Similarly, if the  value changes programmatically (in JavaScript), -->
+                               <!-- the UI element will reflect the updated value  -->
+                                <!-- The @:change event handler is used to trigger the arrivedOrLeft function when the checkbox is changed. -->
+                                <!-- This function will update the mostRecentStudent variable to reflect the student who has just arrived or left. -->
+                                  <!-- Create a button with class btn btn-danger and a  v-on:click of deleteStudent(student) -->
+                                   <!-- This button allows the user to delete a student from the list. -->
+                                    <!-- The btn and btn-danger classes are Bootstrap classes that style the button with a red color, indicating a destructive action. -->
+                                     <!-- The v-on:click directive is used to call the deleteStudent function, passing in the student to be deleted. -->
+                                      <!-- This function will handle the logic for removing the student from the list. -->
+                                        <!-- Create an icon class bi bi-trash-fill and text of Delete -->
+                                         <!-- This icon is a Bootstrap icon that represents a trash can, indicating that the button is for deleting a student. -->
+                                          <!-- The text "Delete" will be displayed next to the icon. -->
+                   <tbody>
+                        <tr v-for="student in sortedStudents" v-bind:key="student.starID" :class="{present: student.present, absent: !student.present}" :key="student.starID">
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.starID }}</td>
+                            <td>
+                                <input type="checkbox" v-model="student.present" @:change="arrivedOrLeft(student)">
+                                <span class="mx-3" v-if="student.present">Here!</span>
+                                <span class="mx-3" v-else>Not present</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" v-on:click="deleteStudent(student)">
+                                <i class="bi bi-trash-fill">Delete</i></button>
+                            </td>
+
+                   </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <!-- This div will display a welcome or goodbye message based on the most recent student's presence status. -->
+        <!-- The message will change depending on whether the most recent student is present or not. -->
+         <!-- The mostRecentStudent variable is used to keep track of the last student who arrived or left. -->
+          <!-- If the mostRecentStudent has a name and is present, it will display a welcome message. -->
+           <!-- If the mostRecentStudent has a name but is not present, it will display a goodbye message. -->
+            <!-- The v-if directive is used to conditionally render the appropriate message based on the student's presence status. -->
+        <!-- The alert classes (alert-success and alert-info) are Bootstrap classes that style the messages with different colors. -->
+        <div id="welcome-or-goodbye-message" class="m-2">
+            <div v-if="mostRecentStudent.name">
+                <div v-if="mostRecentStudent.present" class="alert alert-success">
+                    Welcome, {{ mostRecentStudent.name }}!
+                </div>
+                <div v-else class="alert alert-info">
+                    Goodbye {{ mostRecentStudent.name }}!
+                </div>    
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        // import Vue components
+        const { createApp, ref, computed } = Vue
+
+        // Create a new Vue application
+        // The createApp function is used to create a new Vue application instance.
+        createApp({
+            setup() {
+
+                // Create data functions here
+
+                const newStudentName = ref('') // for the new student's name
+                const newStarID = ref('') // for the new student's starID
+
+                const studentList = ref ([
+                    { name: 'John Doe', starID: '123456', present: false },
+                    { name: 'Jane Smith', starID: '654321', present: false },
+                    { name: 'Alice Johnson', starID: '789012', present: false }
+                    ])
+
+                    const formErrors = ref([]) // for form validation errors
+
+                    const mostRecentStudent = ref({}) // for the most recent student to arrive or leave
+
+                // Function to add a new student to the list
+                // This function will be called when the user clicks the "Add" button.
+                const addStudent = () => {
+
+                    formErrors.value = [] // clear previous errors
+
+                    if (!newStudentName.value) {
+                        formErrors.value.push('Name is required.') // check if name is empty
+                    }
+                    if (!newStarID.value) {
+                        formErrors.value.push('Star ID is required.') // check if starID is empty
+                    }
+                    if (formErrors.value.length == 0) {
+                        let student = {
+                            name: newStudentName.value,
+                            starID: newStarID.value,
+                            present: false }// default to not present
+                            studentList.value.push(student) // add the new student to the list
+                            newStudentName.value = '' // clear the input field
+                            newStarID.value = '' // clear the input field
+                    }
+                }
+
+                // Function to handle when a student arrives or leaves
+                // This function will be called when the checkbox for a student is changed (i.e., when they arrive or leave).
+                const arrivedOrLeft = (student) => {
+                    mostRecentStudent.value = student
+                }
+                
+                // Function to delete a student from the list
+                // This function will be called when the user clicks the "Delete" button for a student.
+                // The studentToDelete parameter represents the student object that we want to remove from the list.
+                // The confirm function displays a dialog box asking the user to confirm the deletion.
+                // If the user clicks "OK", the student will be deleted from the list.
+                // If the user clicks "Cancel", the deletion will be aborted, and the student will remain in the list.
+                // The filter method creates a new array that excludes the student to be deleted.
+                // This is done by checking if the current student in the array is not equal to the studentToDelete.
+                // The studentList.value will be updated to this new array, effectively removing the student from the list.
+                // This approach ensures that the original array is not modified directly, which is important for Vue's reactivity
+                // system.
+                // The filter method is a common way to create a new array based on certain criteria, in this case, excluding the 
+                // student we want to delete.
+                // This is a good practice to ensure that we don't accidentally mutate the original array, which could lead to 
+                // unexpected behavior in our Vue application.
+                const deleteStudent = (studentToDelete) => {
+                    if (confirm(`Delete ${studentToDelete.name}?`)) {
+                    studentList.value = studentList.value.filter( (student) => {
+                        return studentToDelete != student
+                        })
+                    }
+                }
+                
+                // Computed properties for sorting and counting students
+                // The sortedStudents computed property will return a new array of students sorted by their names in alphabetical order.
+                // The toSorted method is used to create a new sorted array without modifying the original studentList.
+                // This is important for maintaining the original order of students in the studentList.
+                // The localeCompare method is used to compare two strings (s1.name and s2.name) in a way that respects the 
+                // locale-specific rules for string comparison.
+                // This is useful for sorting names correctly based on language and cultural conventions.
+                const sortedStudents = computed ( () => {
+                    return studentList.value.toSorted ((s1, s2) => {
+                        return s1.name.localeCompare(s2.name) // sort by name
+                    })
+                })
+                
+                // The studentCount computed property will return the number of students in the studentList.
+                // This is done by accessing the length property of the studentList array.
+                const studentCount = computed ( () => {
+                    return studentList.value.length // count the number of students
+                })
+                
+                // The plural computed property will determine whether to use the singular or plural form of "student" based on 
+                // the count.
+                // This is done by checking if the studentCount is equal to 1.
+                const plural = computed(() => {
+                    if (studentCount.value === 1) {
+                        return 'student' // singular
+                    } else {
+                        return 'students' // plural
+                    }
+                })
+    
+                return {
+                    // return reactive properties
+                    newStudentName,
+                    newStarID,
+                    studentList,
+                    formErrors,
+                    mostRecentStudent,
+
+                    // return functions
+                    addStudent,
+                    arrivedOrLeft,
+                    deleteStudent,
+
+                    // computed properties
+                    sortedStudents,
+                    studentCount
+                }
+            }
+        }).mount('#app') // Connect Vue to #app div
+
+    </script>
+
+</body>
+
+</html>

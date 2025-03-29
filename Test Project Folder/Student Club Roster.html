@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Club Membership</title>
+
+  <style>
+      .selected {
+        text-decoration: line-through;
+        font-style: italic;
+        color: gray;
+      }
+
+      input {
+          width: 100%;
+          padding: 5px;
+          margin: 5px 5px 5px 0px;
+          box-sizing: border-box;
+      }
+  </style>
+</head>
+<body>
+
+    <h1>Student Club Roster</h1>
+
+    <h2>Add Students</h2>
+
+    <label for="student-name">Student Name</label><input id="student-name" name="student-name">
+    <br>
+    <label for="student-id">Student ID</label><input id="student-id" name="student-id">
+    <br>
+    <label for="student-gpa">Student GPA</label><input id="student-gpa" name="student-gpa" type="number">
+    <br>
+    <button id="add-student">Add Student</button>    
+
+    <h2>Student List</h2>
+
+    <p>There are 
+        <span id="student-count">0</span> 
+    student(s) in the club.</p>
+    
+    <p>Click on a student's name to select them</p>
+
+    <ul id="student-list">
+        <!-- use JavaScript to create li elements  -->
+    </ul>
+
+    <button id="remove-selected-students">Remove selected students</button>
+
+<script>
+ // Initialize the student count
+ let count = 0;
+
+ // Create variables for the studentName, studentID, studentGPA, addStudentButton, studentList, and studentCount
+ let studentName = document.querySelector("#student-name");
+ let studentId = document.querySelector("#student-id");
+ let studentGpa = document.querySelector("#student-gpa");
+ let addStudentButton = document.querySelector("#add-student");
+ let studentList = document.querySelector("#student-list");
+ let studentCount = document.querySelector("#student-count");
+
+ // Set initial student count
+ studentCount.innerHTML = count;
+
+ // Create an event listener for the Add Student button
+ addStudentButton.addEventListener("click", function() {
+     // Read the text in the input
+     let newStudentName = studentName.value;
+     let newStudentId = studentId.value;
+     let newStudentGpa = studentGpa.value;
+
+     // Check if the input is empty
+     if (newStudentName.length == 0) {
+         alert("Please enter a name.");
+         return;
+     }
+
+     if (newStudentId.length == 0) {
+         alert("Please enter an ID.");
+         return;
+     }
+
+     if (newStudentGpa.length == 0) {
+         alert("Please enter a GPA.");
+         return;
+     } else if (newStudentGpa < 0 || newStudentGpa > 4) {
+         alert("Please enter a valid GPA.");
+         return;
+     }
+
+     // Create a new li element
+     let newLiElement = document.createElement("li");
+
+     // Set the innerHTML of the li element to a string containing the student's name, id, and GPA
+     newLiElement.innerHTML = `Name: ${newStudentName}, id: ${newStudentId}, GPA: ${newStudentGpa}`;
+
+     // Add a click event handler to the new li element
+     newLiElement.addEventListener("click", function() {
+         // When the li element is clicked, add the class="selected" to that li element
+         // When that li element is clicked again, remove the class="selected" from that li element
+         newLiElement.classList.toggle("selected");
+     });
+
+     // Append new li element to ul#student-list element 
+     studentList.appendChild(newLiElement);
+
+     // Increment the student count
+     count++;
+     studentCount.innerHTML = count;
+
+     // Clear the values of the three input elements
+     studentName.value = "";
+     studentId.value = "";
+     studentGpa.value = "";
+ });
+
+ // Add an event listener to remove selected students
+ let removeSelectedStudentsButton = document.querySelector("#remove-selected-students");
+
+ removeSelectedStudentsButton.addEventListener("click", function() {
+     let selectedStudents = studentList.querySelectorAll(".selected");
+
+     selectedStudents.forEach(function(student) {
+         studentList.removeChild(student);
+         count--;
+     });
+
+     // Update the student count
+     studentCount.innerHTML = count;
+ });
+</script>
+
+</body>
+</html>
