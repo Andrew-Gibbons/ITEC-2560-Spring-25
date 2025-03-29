@@ -1,0 +1,3 @@
+The main difference I see is that with Vue dev tools we are able to manipulate the working code in a browser as opposed to have to go back to the source code.  This would be especially useful when testing truthy/false-y, input and buttons' code.
+
+With Vue there is an aspect of the design process being compact.  As a programmer, we would only import the Vue components that we are aware would need on the fly testing as we design our pages.  I prefer this at makes the design process more clear as to what would be the foundation of a page that is not going to be interactive with a user and what parts will.   
