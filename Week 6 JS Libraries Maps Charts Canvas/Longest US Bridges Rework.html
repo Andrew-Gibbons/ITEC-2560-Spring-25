@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="bridges.js"></script>
 <!-- End head -->
 </head>
 <!-- Start body -->
@@ -44,6 +43,50 @@
             popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
         });
 
+        // Data for the bridges
+        let bridges = [
+        {
+            name: "Golden Gate Bridge",
+            city: "San Francisco and Marin, CA",
+            span: 1280.2,
+            location: [37.8199, -122.4783]
+        },
+        {
+            name: "Verrazzano-Narrows Bridge",
+            city: "New York, NY",
+            span: 1298.4,
+            location: [40.6066, -74.0447]
+        },
+        {
+            name: "Mackinac Bridge",
+            city: "Mackinaw and St Ignace, MI",
+            span: 1158.0,
+            location: [45.8174, -84.7278]
+        },
+        {
+            name: "George Washington Bridge",
+            city: "New York, NY and New Jersey, NJ",
+            span: 1067.0,
+            location: [40.8517, -73.9527]
+        },
+        {
+            name: "Tacoma Narrows Bridge",
+            city: "Tacoma and Kitsap, WA",
+            span: 853.44,
+            location: [47.2690, -122.5517]
+        }
+    ];
+        // Create an array of bridge names
+        // Create a forEach loop to iterate over the bridges array
+        // Push the name of each bridge to the bridgeNames array
+        // Log the bridgeNames array to the console
+        let bridgeNames = [];
+            bridges.forEach(bridge => {
+            bridgeNames.push(bridge.name);
+        });
+            console.log(bridgeNames);
+
+
 
     
 // Add the OpenStreetMap tiles
@@ -52,29 +95,43 @@
     }).addTo(map);
 
     
-     // Add marker for the largest bridge
-     let largestBridge = bridges[0]; // Assuming the first object in the `bridges` array is the largest
-        L.marker(largestBridge.location, { icon: longestBridgeIcon })
+    // Add markers dynamically, identifying the largest bridge
+    let largestSpan = Math.max(...bridges.map(bridge => bridge.span)); // Dynamically determine the largest span
+
+    // Iterate over the bridges array
+    // Create a marker for each bridge
+    // Use the longestBridgeIcon for the largest bridge
+    // Use the smallerBridgeIcon for all other bridges
+    // Add a popup to each marker with the bridge name and span
+
+    bridges.forEach(bridge => {
+        const icon = bridge.span === largestSpan ? longestBridgeIcon : smallerBridgeIcon; // Use special icon for the largest bridge
+        L.marker(bridge.location, { icon: icon })
             .addTo(map)
-            .bindPopup('<b>' + largestBridge.name + '</b><br>Span: ' + largestBridge.span + ' meters');
+            .bindPopup('<b>' + bridge.name + '</b><br>Span: ' + bridge.span + ' meters');
+    })
 
-        // Add markers for the other smaller bridges
-        for (let i = 1; i < bridges.length; i++) {
-            L.marker(bridges[i].location, { icon: smallerBridgeIcon })
-                .addTo(map)
-                .bindPopup('<b>' + bridges[i].name + '</b><br>Span: ' + bridges[i].span + ' meters');
-        }
-
-
+// Add a bar chart to the page
+// Create a canvas element with the id bridgeChart
+// Create a new Chart object with the context of the canvas element
+// Set the type of the chart to 'bar'
+// Set the data for the chart
+// Set the labels to the bridge names
+// Set the data to the spans of the bridges
+// Set the background color of the bars
+// Set the border color of the bars
+// Set the border width of the bars
+// Set the options for the chart
+// Set the y-axis to begin at zero
 document.addEventListener('DOMContentLoaded', function () {  
  const ctx = document.getElementById('bridgeChart').getContext('2d');
         const bridgeChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Verrazzano-Narrows Bridge', 'Golden Gate Bridge', 'Mackinac Bridge', 'George Washington Bridge', 'Tacoma Narrows Bridge'],
-                datasets: [{
+                labels: bridgeNames,
+                    datasets: [{
                     label: 'Span (meters)',
-                    data: [1298.4, 1280.2, 1158.0, 1067.0, 853.44],
+                    data: bridges.map(bridge => bridge.span),
                     backgroundColor: [
                         'rgba(75, 192, 192, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
