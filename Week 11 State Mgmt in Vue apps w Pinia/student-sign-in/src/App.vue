@@ -1,18 +1,19 @@
 <script setup>
 
-// script goes here
+import NewStudentForm from './components/NewStudentForm.vue'; 
+import StudentTable from './components/StudentTable.vue';
+import StudentMessage from './components/StudentMessage.vue';
 
 </script>
 
 <template>
 
-<!-- HTML goes here -->
-
+<NewStudentForm></NewStudentForm>
+<StudentTable></StudentTable>
+<StudentMessage></StudentMessage>
 
 </template>
 
 <style scoped>
-
-/* CSS goes here */
 
 </style>
