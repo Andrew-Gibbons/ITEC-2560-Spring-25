@@ -1,10 +1,14 @@
 <script setup>
 
+// Import useStudentStore from the StudentStore.js file
+// Import storeToRefs from the pinia library
 import { useStudentStore } from '../stores/StudentStore.js'
 import { storeToRefs } from 'pinia'
 
+// Create a constant for the student store
 const studentStore = useStudentStore()
 
+// Create a constant for the most recent student
 const { mostRecentStudent } = storeToRefs(studentStore)
 
 </script>
@@ -12,6 +16,8 @@ const { mostRecentStudent } = storeToRefs(studentStore)
 
 <template>
 
+        <!-- Create a div for the student list table -->
+         <!-- Create a welcome and departing message to student -->
         <div id="welcome-or-goodbye-message" class="m-2">
             <div v-if="mostRecentStudent.name">
 
