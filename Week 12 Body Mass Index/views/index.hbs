@@ -1,0 +1,15 @@
+{{! Form to use GET method to send data to the server }}
+{{! This form collects height and weight from the user }}
+{{! The form action is set to "/calculate" to handle the calculation on the server }}
+{{! The form includes input fields for height and weight, both required }}
+{{! The button submits the form to calculate BMI }}
+<h1>BMI Calculator</h1>
+<form method="GET" action="/calculate">
+    <label for="height">Height (m):</label>
+    <input type="number" id="height" name="height" step="0.01" required>
+    
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" name="weight" step="0.1" required>
+
+    <button type="submit">Calculate</button>
+</form>

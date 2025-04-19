@@ -1,0 +1,11 @@
+{{! Diesplay the BMI result page with height, weight, and calculated BMI }}
+{{! This template is used to display the result of the BMI calculation }}
+{{! The height, weight, and calculated BMI are passed from the server to the template }}
+{{! The result is displayed in a paragraph element with a strong emphasis on the BMI value }}
+{{! A link is provided to allow the user to return to the main page }}
+<h1>Calculation Result</h1>
+<p>Height: {{ height }} m</p>
+<p>Weight: {{ weight }} kg</p>
+<p>Your BMI: <strong>{{ bmi }}</strong></p>
+
+<a href="/">Go Back</a>

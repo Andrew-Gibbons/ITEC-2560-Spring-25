@@ -1,0 +1,10 @@
+{
+  "name": "bmi-calculator",
+  "version": "1.0.0",
+  "description": "A simple Express-based BMI Calculator",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.2.0"
+  }
+}
+
