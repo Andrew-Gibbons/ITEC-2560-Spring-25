@@ -1,3 +1,6 @@
+// This file contains a list of "Would You Rather" questions and a function to return a random question from the list.
+// The questions are structured as an array of objects, each containing a question and two possible answers.
+
 const questions = [
     {
         'question': 'Live in a house shaped like a triangle or a house shaped like a circle?',
@@ -37,4 +40,8 @@ function randomWyrQuestion () {
     return randomQuestion
 }
 
+// Export data in node.js '
+// It allows another file to import and use the randomWyrQuestion variable or function.
+// This is likely a function or variable that generates "Would You Rather" questions (based on the context of your previous messages).
+// Once exported, other files can access it by using require()
 module.exports = randomWyrQuestion
