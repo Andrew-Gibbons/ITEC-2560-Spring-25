@@ -1,23 +1,27 @@
-// import { defineStore } from "pinia"
-// import { ref, computed } from "vue"
 import { defineStore } from "pinia"
 import { ref, computed } from "vue"
+import { mande } from 'mande'
+
+const studentAPI = mande('api/students')
 
 // Create a store for student data
 export const useStudentStore = defineStore("student", () => {
 
-    // State variables
-    const studentList = ref([
-        { name: "A.Student", starID: "aa1234aa", present: false },
-        { name: "B.Student", starID: "bb1234bb", present: false }
-    ])
+    const sortedStudens = ref( [] )
 
-    // Most recent student to arrive or leave
     const mostRecentStudent = ref( {} )
+
+    function getAllStudents() {
+        studentAPI.get().then( students => {
+            studentList.value = students
+        })
+    }
+
+
 
     // Actions
     function addNewStudent( student ) {
-        studentList.value.push( student )
+        studentAPI.post( student ).then( () => getAllStudents() )
     }
 
     // Delete a student from the list
@@ -33,10 +37,7 @@ export const useStudentStore = defineStore("student", () => {
         mostRecentStudent.value = student
     }
 
-    // Computed properties
-    const studentCount = computed(() => {
-        return studentList.value.length
-    })
+
 
     // Sort the student list by name
     const sortedStudents = computed(() => {
@@ -52,6 +53,7 @@ export const useStudentStore = defineStore("student", () => {
         addNewStudent,
         deleteStudent,
         arrivedOrLeft,
+        getAllStudents,
         studentCount,
         sortedStudents
     }
