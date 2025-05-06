@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
 
 app.use(function(req, res, next, err) {
   console.error(err.stack)  // for server developer
-  res.status(500).send('Something broke!')  // for client
+  res.status(500).send('Server error!!')  // for client
 })
 
 // Start server running

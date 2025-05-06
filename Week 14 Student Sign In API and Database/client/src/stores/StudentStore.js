@@ -7,53 +7,60 @@ const studentAPI = mande('api/students')
 // Create a store for student data
 export const useStudentStore = defineStore("student", () => {
 
-    const sortedStudents = ref( [] )
+    const studentList = ref( [] )
 
     const mostRecentStudent = ref( {} )
 
+    const addNewStudentErrors = ref( [] )
+
     function getAllStudents() {
-        studentAPI.get().then( students => {
-            sortedStudents.value = students
-        });
+        return studentAPI.get().then( students => {
+            studentList.value = students
+        })
     }
 
     // Actions
     function addNewStudent( student ) {
-        studentAPI.post( student ).then( () => {
+        studentAPI.post( student ).then( resp => {
             getAllStudents()
+    }).catch( err => {
+        addNewStudentErrors.value = err.body
     })
     }
     // Delete a student from the list
     function deleteStudent(studentToDelete) {
-        // studentList.value = studentList.value.filter( ( student ) => {
-            // return studentToDelete != student
-        // })
-        // mostRecentStudent.value = {}
+        const deleteStudentAPI = mande(`/api/students/${studentToDelete.id}`)
+        deleteStudentAPI.delete().then( () => {
+            mostRecentStudent.value = {} 
+            getAllStudents()
+        })
     }
 
     // Update the most recent student to arrive or leave
     function arrivedOrLeft(student) {
-        //mostRecentStudent.value = student
+        const editStudentAPI = mande(`api/students/${student.id}`)
+        editStudentAPI.patch(student).then( () => {
+            getAllStudents()
+        })
     }
 
+    const sortedStudents = computed(() => {
+        return studentList.value.slice().sort((s1, s2) => s1.name.localeCompare(s2.name));
+    });
+
     const studentCount = computed(() => {
-        return sortedStudents.value.length
-    })
-
-
-
-    // Sort the student list by name
-    // const sortedStudents = computed(() => {
-        // return studentList.value.toSorted((s1, s2) => { 
-            // return s1.name.localeCompare(s2.name)
-        // })
-    })
+        return sortedStudents.value?.length || 0;
+    });
     
-        // Return the state, actions, and computed properties   
-        return { 
+    
+    
+
+    return { 
         // reactive data
         sortedStudents,
+        studentCount,
         mostRecentStudent,
+        addNewStudentErrors,
 
         // functions
         addNewStudent,
@@ -65,3 +72,12 @@ export const useStudentStore = defineStore("student", () => {
         studentCount
         
     }
+
+    // Sort the student list by name
+    // const sortedStudents = computed(() => {
+        // return studentList.value.toSorted((s1, s2) => { 
+            // return s1.name.localeCompare(s2.name)
+        // })
+    })
+    
+        // Return the state, actions, and computed properties   

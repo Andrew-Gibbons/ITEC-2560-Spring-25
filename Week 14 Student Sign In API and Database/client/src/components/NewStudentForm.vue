@@ -2,9 +2,10 @@
 
 // Import the ref function from Vue
 // import useStudentStore from the StudentStore.js file
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 import { useStudentStore } from '../stores/StudentStore.js'
+import { storeToRefs } from 'pinia'
 
 // Create a constant for the student store
 const studentStore = useStudentStore()
@@ -15,6 +16,15 @@ const newStarID = ref('')
 
 // Create a new ref for the form errors
 const formErrors = ref([])
+
+const { addNewStudentErrors } = storeToRefs(studentStore)
+
+watch(() => addNewStudentErrors.value, (newErrors) => {
+    if (newErrors?.length) {
+        alert(newErrors.join('\n'));
+    }
+});
+
 
 // Create a function to add a new student
 const addStudent = () => {
