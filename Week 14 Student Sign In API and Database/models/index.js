@@ -10,8 +10,11 @@ const createStudentModel = require('./student')
 
 const env = process.env.NODE_ENV || 'development'
 
+const dbPassword = process.env.DB_PASSWORD
+
 // selects the configuration for the current environment (development, test, or production) from the config.json file
 const config = configJson[env]
+config.password = dbPassword
 
 // creates a new Sequelize instance using the configuration for the current environment
 const sequelize = new Sequelize(config)

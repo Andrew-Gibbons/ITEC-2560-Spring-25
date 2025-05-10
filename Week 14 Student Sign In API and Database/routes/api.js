@@ -22,6 +22,7 @@ router.get('/students', function(req, res, next) {
 // This route creates a new student in the database using the data provided in the request body
 router.post('/students', function(req, res, next) {
     const newStudent = req.body
+    console.log(newStudent)
     Student.create(newStudent).then( result => {
         return res.status(201).send('New student created')
     }).catch( err => {
